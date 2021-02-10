@@ -1,0 +1,1034 @@
+[33mcommit ef648d6fcd429fa1ea5f6b20520b35087681dceb[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;32mdatamodelpro[m[33m)[m
+Author: yensillara <arquiperiodista@gmail.com>
+Date:   Tue Feb 9 23:11:52 2021 -0400
+
+    Creada clase Professional y metodo GET y POST
+    
+    Faltan crear metodos Patch y Delete del Professional
+    
+    Comentado password y salt para revisar luego
+
+[33mcommit 38fd01ea58e4cbece6f0b5d40b6a605a0b528f1e[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: yensillara <arquiperiodista@gmail.com>
+Date:   Tue Feb 9 21:51:27 2021 -0400
+
+    first commit
+
+[33mcommit f4eebab9e680d4615f4b15672ccbea2d44660b16[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jan 26 11:17:09 2021 -0500
+
+    Update CHANGE_LOG.md
+
+[33mcommit 91d7ab5436518e99de34aa203676f1d8a596d3c9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jan 26 11:15:02 2021 -0500
+
+    Update _QUICK_START.md
+
+[33mcommit 4a09c41ec4d1b3439da2cf1ff1602f0e08fb3e72[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jan 26 11:14:35 2021 -0500
+
+    Update .gitpod.yml
+
+[33mcommit 97b5fcaf39f1f19dc2fcf310bb69dbcafd0b2be8[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jan 26 10:52:03 2021 -0500
+
+    Update DEPLOY_PUBLISH_YOUR_APP.md
+
+[33mcommit 34a0041f0503c24ad5e1041ad669b82a2efe3719[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jan 26 10:50:41 2021 -0500
+
+    Update README.md
+
+[33mcommit 1010cd12304fe672a422f0fb5629c46a432ac22c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Sep 14 16:15:15 2020 -0400
+
+    Update CHANGE_LOG.md
+
+[33mcommit 2fd08aa256eb1527cc5018066b01b6319c67ed72[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Sep 14 16:12:52 2020 -0400
+
+    Create RESET_MIGRATIONS.md
+
+[33mcommit f4487c7cc5cc43e9259df8f4665717b4500d4aeb[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Sep 11 18:48:19 2020 -0400
+
+    Update .gitpod.Dockerfile
+
+[33mcommit 5fff57b47d6bba24148bb19db1362596233164bf[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Sep 11 18:47:38 2020 -0400
+
+    Update Pipfile
+
+[33mcommit f5b5cc5dfbcc73ef3a3563dcd00e5374d64274e5[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 28 11:49:49 2020 -0400
+
+    Update DEPLOY_PUBLISH_YOUR_APP.md
+
+[33mcommit 9d945fd6221004a1081a2f07b5920d90e84b50bd[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 28 11:22:46 2020 -0400
+
+    Update DEPLOY_PUBLISH_YOUR_APP.md
+
+[33mcommit 8fd6ad426d50da136ff3a5a5cf0482ecbacaa86c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Jul 1 17:17:56 2020 -0400
+
+    Update Pipfile
+
+[33mcommit 86f33a3ebca3d16be5fc48de13a3bf97ca287fec[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Jul 1 17:15:55 2020 -0400
+
+    Update Pipfile
+
+[33mcommit 305a2e52e01babba31663d8605ceb78513078f9d[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Jul 1 20:52:49 2020 +0000
+
+    Updated documentation for the admin
+
+[33mcommit aae1e647fef64d1153ca6a95e81449b88256a1a1[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Jul 1 20:46:21 2020 +0000
+
+    updated documentation
+
+[33mcommit 5454b5117c53ba275085684df0525fed1fe4e6ac[m
+Merge: 8f37279 6960047
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 22:01:54 2020 +0000
+
+    Merge branch 'master' of https://github.com/4GeeksAcademy/flask-rest-hello
+
+[33mcommit 8f3727989d7d5967e105d360f0ff1f16487bf928[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 22:01:32 2020 +0000
+
+    how to video
+
+[33mcommit 69600472c8af484ea9b3f8cef7aa7434f9d35b9e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 18:00:05 2020 -0400
+
+    Delete how-to.png
+
+[33mcommit cf0b9016d8beadc4144cd01ba303db4591620e3a[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 17:59:53 2020 -0400
+
+    Add files via upload
+
+[33mcommit 2a0ec6b6c5a228c5090b891b0ef0ec4b61e13737[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 17:59:33 2020 -0400
+
+    Add files via upload
+
+[33mcommit 9826cf7b2ff0c3f235c9c62828f1fd1e5cc19af6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 17:59:24 2020 -0400
+
+    Delete how-to.png
+
+[33mcommit aaa9d72f4f0ab62a9bbce91c0514d4782cf2aeb6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 17:58:39 2020 -0400
+
+    Add files via upload
+
+[33mcommit cc2c4bb68cc711793e245328a65a8c5a13e5eae9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Jun 29 21:28:12 2020 +0000
+
+    some fixes
+
+[33mcommit 59dc23f6687fc8248e9f12ccf2ed30a0fc330481[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 26 19:31:33 2020 +0000
+
+    docs
+
+[33mcommit b7270d4656dd8d9d881c814a7b8aa1a35b903b8e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 26 19:24:45 2020 +0000
+
+    docs
+
+[33mcommit 54180fc9022867c73969ff67c05e440b1a9d5d66[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 26 12:30:31 2020 -0400
+
+    Update .gitpod.yml
+
+[33mcommit 08948c825509cba92ba250daef9c0ff614a922b3[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 26 12:30:00 2020 -0400
+
+    Update Pipfile
+
+[33mcommit 79f78503d104e64ca5326a5a356b5efa4c8aac70[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Apr 6 15:56:04 2020 +0000
+
+    do not prebuild
+
+[33mcommit 9ccdc166e11bd99c445ba4e35f4317dd77e85746[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Apr 6 15:54:31 2020 +0000
+
+    do not prebuild
+
+[33mcommit 666082b9f641ea7e09955be1c364fd1d79a8fdda[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Apr 6 15:44:10 2020 +0000
+
+    trying to fix error with mysql
+
+[33mcommit b17a6e7a6c547d82cef7fb4d950a89012561bdd9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Mar 14 12:14:23 2020 -0400
+
+    Update .gitpod.yml
+
+[33mcommit c289d9e0a4e2074c99e9bf271f21451a7dd03fc4[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Mar 3 12:28:42 2020 -0500
+
+    Update .gitpod.yml
+
+[33mcommit 7087088d6cdea84dd62852adfe2a0b6e724c88cf[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Mar 3 12:12:44 2020 -0500
+
+    Update Pipfile
+
+[33mcommit 274429f8b90a903b5b71c82ca7451831c4b7fef2[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Mar 3 12:12:15 2020 -0500
+
+    Update .gitpod.Dockerfile
+
+[33mcommit 2bf7a00fc0ed0cb6c696ecc47826a85b7a614b2a[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Nov 20 21:47:53 2019 -0500
+
+    Update Procfile
+
+[33mcommit 8358f7ca1bea2f55c05aca1effce71ed7fbb2802[m
+Merge: 045c92c 1357706
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Nov 20 19:30:41 2019 -0500
+
+    Merge pull request #17 from ferfunes/patch-1
+    
+    Update Procfile
+
+[33mcommit 135770697c1a6369daf57e23ab1b4b6acb357015[m
+Author: Fernando Funez <49736675+ferfunes@users.noreply.github.com>
+Date:   Wed Nov 20 19:29:03 2019 -0500
+
+    Update Procfile
+
+[33mcommit 045c92cecebe646187458909667d5d5beef59199[m
+Merge: e21643e 349b3a9
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Nov 8 11:40:47 2019 -0500
+
+    Merge pull request #16 from svenefftinge/master
+    
+    I love the splited command line 😄 less room for confusion. Thanks for the PR man.
+
+[33mcommit 349b3a96f4d341fc628b15028c2c60164cba20e1[m
+Author: Sven Efftinge <sven.efftinge@typefox.io>
+Date:   Fri Nov 8 07:20:28 2019 +0000
+
+    [gitpod] improved config
+
+[33mcommit e21643e21c156fea60c961c4df97ffb41ecda4ac[m
+Merge: 6adf4dc dc60409
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Thu Nov 7 02:06:31 2019 -0500
+
+    Merge pull request #15 from nachovz/patch-2
+    
+    PUT
+
+[33mcommit dc60409b978e6df4b37739c379d44f4653302ab2[m
+Author: Ignacio Cordoba <icordoba@4geeks.co>
+Date:   Wed Nov 6 20:54:32 2019 -0500
+
+    PUT
+
+[33mcommit 6adf4dcd97b91618a9ce6c52c693914850a841c4[m
+Merge: 00092a2 99ba450
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Nov 1 16:19:11 2019 -0400
+
+    Merge pull request #14 from ColbyWTaylor/patch-8
+    
+    updating path ref
+
+[33mcommit 99ba450333e81fa8902f79c971045c3fa6059c5f[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Fri Nov 1 10:54:40 2019 -0400
+
+    updating path ref
+    
+    This conflicts with the examples, so changing to "handle_hello" to alleviate the confusion
+
+[33mcommit 00092a2fdd66fc7945b56717d99ed5a64d2bb774[m
+Merge: bcd8e29 4d4de54
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Oct 28 15:35:21 2019 -0400
+
+    Merge pull request #11 from ColbyWTaylor/patch-5
+    
+    added link to list item
+
+[33mcommit bcd8e29e7db3a229f6cfa7b04510a7d25cbf27d0[m
+Merge: 78ccd22 b054018
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Oct 28 15:35:06 2019 -0400
+
+    Merge pull request #12 from ColbyWTaylor/patch-6
+    
+    typo
+
+[33mcommit 78ccd22641d224ea160394560fc9569df193e19a[m
+Merge: c7ec07b e9b47ad
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Oct 28 15:33:44 2019 -0400
+
+    Merge pull request #13 from ColbyWTaylor/patch-7
+    
+    typos
+
+[33mcommit e9b47ad1a7db1d690955fb5cfa8652d997b5eaa6[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Mon Oct 28 13:23:32 2019 -0400
+
+    typos
+
+[33mcommit b054018965ab66ee9c11c45398f0754c428ac4ef[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Mon Oct 28 13:19:44 2019 -0400
+
+    typo
+
+[33mcommit 4d4de541ffaf1fd8b1875df1a8a8cb85ff31b81a[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Mon Oct 28 12:54:47 2019 -0400
+
+    added link to list item
+
+[33mcommit c7ec07bac20d125415cfa2561ee9551ee8e8847f[m
+Merge: d01a057 7889a29
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Thu Oct 10 14:10:28 2019 -0400
+
+    Merge pull request #9 from ColbyWTaylor/patch-2
+    
+    typos
+
+[33mcommit d01a057c93355574c80d857b471103c765fe45fa[m
+Merge: f3e1aee e38b1f1
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Thu Oct 10 14:10:16 2019 -0400
+
+    Merge pull request #10 from ColbyWTaylor/patch-3
+    
+    Update README.md
+
+[33mcommit e38b1f19c7bd246b328e48bc4ceefe6e9970e05b[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Wed Oct 9 23:04:23 2019 -0400
+
+    Update README.md
+
+[33mcommit 7889a29abf3e8a3546fac9219b9dc60b514b339a[m
+Author: ColbyWTaylor <colbyt.093@gmail.com>
+Date:   Wed Oct 9 23:02:06 2019 -0400
+
+    typos
+
+[33mcommit f3e1aee4b86776475dde3cd58c25dc0ad124d52f[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Sep 16 19:40:28 2019 -0400
+
+    Update DEBUGGING.md
+
+[33mcommit 92a8be6125b92c088d56277b82c72d7b048487f4[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Sep 16 23:13:14 2019 +0000
+
+    Add debugging funcionality
+
+[33mcommit 453a83069a359eb63e898c8bd127d90db07117f0[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Sep 16 18:45:34 2019 -0400
+
+    Update main.py
+
+[33mcommit 5213f7b26cc1c9786c0812a25f6effcdd8602de3[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Sep 6 20:03:39 2019 -0400
+
+    Update utils.py
+
+[33mcommit a1091bde1fd900d538d8182dc6e5c444c2b58bd7[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Aug 31 16:06:52 2019 +0000
+
+    deleted migrations
+
+[33mcommit f15e25d0bb217245f882a515eb4e7420573d3a4d[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 27 18:46:22 2019 +0000
+
+    testing on heroku
+
+[33mcommit cf8787295864a259e4cf44546f2201d43209b750[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 27 18:41:39 2019 +0000
+
+    testing on heroku
+
+[33mcommit 664b234d60226298a9774c1a58c10ade6d3d98af[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 27 18:39:36 2019 +0000
+
+    removing migrations
+
+[33mcommit a46657d60cdb9f5b710da667edc2d275ed886068[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 27 18:37:49 2019 +0000
+
+    fixing compatibility with heroku
+
+[33mcommit 2283640d8f5aebce1da6133cd7fb1828b96e6800[m
+Merge: 1974cfd 1723309
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Aug 21 12:00:53 2019 -0400
+
+    Merge pull request #8 from jferragut/patch-1
+    
+    Fixed typo on readme
+
+[33mcommit 17233097bead26e6ad81c12eaf61253dc01ea336[m
+Author: Jonathan Ferragut <jonathan@alkemyinc.com>
+Date:   Wed Aug 21 11:55:14 2019 -0400
+
+    Fixed typo on readme
+    
+    should be models.py, not mode.py
+
+[33mcommit 1974cfdd192d5dd9d08ebb7f159b5a8029c0106c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Aug 19 13:34:01 2019 -0400
+
+    Update main.py
+
+[33mcommit e7f91829cdf2ab89b9690c44435152aee23d5991[m
+Merge: 86c90d8 00309f3
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Aug 19 13:33:36 2019 -0400
+
+    Merge pull request #7 from hernanjkd/patch-1
+    
+    Update DATABASE.md
+
+[33mcommit 00309f3f8ba38f697f5a38b77e3b505da4774818[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Fri Aug 16 00:12:51 2019 -0400
+
+    Update DATABASE.md
+
+[33mcommit 86c90d86e0384427b5911d7564f4d8b68a658341[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 16 00:58:29 2019 +0000
+
+    more compatible python msql connecto to avoid installation issues
+
+[33mcommit a8ded85d320e2b2cca502e72f4e40250abbd5a74[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 16 00:58:19 2019 +0000
+
+    more compatible python msql connecto to avoid installation issues
+
+[33mcommit bde66dc0b2c2cd861744e39fdd58f575ec0f419c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 16 00:46:29 2019 +0000
+
+    trying hard to mae it compatible with easier mysql configs
+
+[33mcommit 696354a8d1b9b85a7c618c8da71cfc2d122272b6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 16 00:25:33 2019 +0000
+
+    making the boilerplate more simple
+
+[33mcommit 9e349073365c2cc9bc683bde38cf7343216c0ba0[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 16 00:24:54 2019 +0000
+
+    making the boilerplate more simple
+
+[33mcommit db81ec39bfa0f5d43aedc633a1b46eeaf10d5614[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Aug 14 22:29:11 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit 312c2e8a18e07b099d4938f8fca762fbb68de391[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Aug 14 22:28:20 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit c9df486f22b07e6ae18202212567ab7ba9dc7ea7[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Aug 14 22:27:44 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit f540c74efc0de2e46444c2275f8fd1eb43c5b3d6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Aug 14 22:26:45 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit f459f3878bb04f8e9fabc0bf5f4cb89a331e722b[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:47:59 2019 -0400
+
+    Update README.md
+
+[33mcommit c26ac727f6c27e8cda6821c94a344b14d4e69aa8[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:45:24 2019 -0400
+
+    Delete 2019-08-13 14.29.49.gif
+
+[33mcommit f9cfae3bc4c1d04646ae192f0cfa14fe11fed255[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:45:09 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit 7ee0e9529dbb37a7c1cff69cb0c19c4581fd32c4[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:44:44 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit 37d3b9bff5bb063d35537599a5580b0aff42b1dd[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:43:50 2019 -0400
+
+    Update DEPLOY_YOUR_APP.md
+
+[33mcommit 9b85bdebeeb250a005e68b6f56769dc810cc96d6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:42:18 2019 -0400
+
+    Add files via upload
+
+[33mcommit c430be96179f61e6e3d06882a79063f2b4ae1c71[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:41:24 2019 -0400
+
+    Create .assets
+
+[33mcommit 5891022c6bbed96363992b551e2bd61b28b5ca74[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:31:55 2019 -0400
+
+    Add files via upload
+
+[33mcommit 0a2917968656a8172012a2b8b3a550dd49cd7516[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Aug 13 14:31:39 2019 -0400
+
+    Create DEPLOY_YOUR_APP.md
+
+[33mcommit ec61241db75c5fe68205dc12413e00043ed90875[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Aug 12 11:44:11 2019 -0400
+
+    Update DATABASE.md
+
+[33mcommit 369a20f24d5441f5a1334a94a1d4aaa0eccc32a9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Aug 12 11:43:50 2019 -0400
+
+    Update DATABASE.md
+
+[33mcommit 10c00383aca1b44b399fced16c4ed19f10f1c37b[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 17:46:07 2019 -0400
+
+    Update README.md
+
+[33mcommit 61587a2f50ff62b40247ebd7db77a43045f0b545[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:48:36 2019 -0400
+
+    Update README.md
+
+[33mcommit c70a57a40772d2b99dfaa6247aaf3f2301c665c9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:48:01 2019 -0400
+
+    Create CHANGE_LOG.md
+
+[33mcommit 6aa313df00d490eb73f3b6f1664cbcef7adcfa9b[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:47:40 2019 -0400
+
+    Update DATABASE.md
+
+[33mcommit e86fdc731655c4e5d002956fb36c4c15b5154092[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:47:04 2019 -0400
+
+    Update and rename MYSQL.md to DATABASE.md
+
+[33mcommit 9dcba86f1058a9f1080fb341ac807500501f58c8[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:36:02 2019 -0400
+
+    Update DATA_VALIDATIONS.md
+
+[33mcommit aa14cb7cf7aebdcb8c605aaed5bb4d9de03b3031[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:35:42 2019 -0400
+
+    Documentation for data validations
+
+[33mcommit 02750686aed81a56484995a63171e7891719317e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:25:43 2019 -0400
+
+    Update Pipfile
+
+[33mcommit f85e171c644efcec1bb2cd37fcb983a5641659fb[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:23:56 2019 -0400
+
+    Update README.md
+
+[33mcommit 7db95878bc5f12b566ea669144b413f6372c891c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:22:56 2019 -0400
+
+    Update README.md
+
+[33mcommit b47970448208e7328fbed6fb11b9056127f360a4[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:17:49 2019 -0400
+
+    Update Pipfile
+
+[33mcommit 8664a6a982c5889e7198c2744e2bd924752a8c84[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:15:31 2019 -0400
+
+    Update README.md
+
+[33mcommit 143374ef963944ef326ef9a0c94fdee2bcd27525[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Aug 9 13:13:13 2019 -0400
+
+    Update README.md
+
+[33mcommit 3f98506906099a2d66a866e780678a2108bead75[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 14:03:09 2019 -0400
+
+    Update wsgi.py
+
+[33mcommit 0cc136917c3d6a44e445e7b69b95f8be630495df[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:59:25 2019 +0000
+
+    deploy to heroku feature
+
+[33mcommit ae7c2ccc766e3bec8d43c0282a2b5270009bc5a6[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:55:46 2019 +0000
+
+    deploy to heroku feature
+
+[33mcommit 9fb71dcbdc215e6a1e17d9bc4ec4c7e3117740ab[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:44:38 2019 +0000
+
+    procfile and wsdi
+
+[33mcommit 5bf68118b182d786cf53fd0ad88d0c01afb69d1e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:28:01 2019 +0000
+
+    updated lock
+
+[33mcommit 7743a7ab147711c78644d66ecb7a1bc96a23b85b[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:25:04 2019 +0000
+
+    removed migrations
+
+[33mcommit 88e8e20c4e5c1c18b494c080bd2aff8225a0ef9d[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Jul 9 17:23:08 2019 +0000
+
+    migrations
+
+[33mcommit 05fd5b5b0abda4a5e340f15ee7d92a434eb9cd4c[m
+Merge: 47268a8 79f5f09
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 21 16:15:19 2019 -0400
+
+    Merge pull request #6 from hernanjkd/init-with-database
+    
+    strict_slashes = False
+
+[33mcommit 79f5f09d6aff3286b3133e2252d896d923204096[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Fri Jun 21 19:49:14 2019 +0000
+
+    strict_slashes = False
+
+[33mcommit 47268a82d7466645921b68367e0b4b44098c5124[m
+Merge: 469b8b8 b0d693f
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Jun 21 11:41:31 2019 -0400
+
+    Merge pull request #5 from hernanjkd/init-with-database
+    
+    Init with database
+
+[33mcommit b0d693ff9c74621dcd1668751c593fdddfd9a6d4[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Fri Jun 21 13:07:01 2019 +0000
+
+    added new line to create database
+
+[33mcommit 450f7b03d8a661f125803187405d154714f0f2c3[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Fri Jun 21 08:51:15 2019 +0000
+
+    add database with mysql command from shell
+
+[33mcommit 469b8b8604778f0d991a8798ef390b505f2eee9c[m
+Merge: da16869 319c23e
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Jun 12 12:39:56 2019 -0400
+
+    Merge pull request #4 from hernanjkd/init-with-database
+    
+    Init with database
+
+[33mcommit 319c23e9ea439db7c22a45cb78bfaf84a2b344c1[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Tue Jun 11 22:15:41 2019 +0000
+
+    uncommit migrations folder
+
+[33mcommit bac2d50c1c455b3d411fc1e14a4b6fb792e4f6d4[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Tue Jun 11 20:50:07 2019 +0000
+
+    Updated the DELETE method
+
+[33mcommit 5cfa26ac374740f8d8c4f167841bd412efea4c72[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Tue Jun 11 18:29:23 2019 +0000
+
+    delete migrations folder
+
+[33mcommit cc0b1aef7c4398425ec11d6d50098292a5087726[m
+Author: Hernán García <hernanjkd@gmail.com>
+Date:   Tue Jun 11 17:00:04 2019 +0000
+
+    init create database
+
+[33mcommit da16869646e0a4ba69dffd9ebfa7c45b9c636d4c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 22 15:10:57 2019 +0000
+
+    transition to mysql
+
+[33mcommit 7edaebee61e29e59649c11f0df0b2fc18c92aa39[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 22 10:47:58 2019 -0400
+
+    Update .gitpod.dockerfile
+
+[33mcommit de7bf1cc957a6d422c0ef3b0240dfe4ec8d7b56e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon May 20 05:03:05 2019 +0000
+
+    swap orderr on migrate/upgrade
+
+[33mcommit 2d9316b7137e4250214d4c3a5e2b76bcdc5ae1ba[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon May 20 05:00:02 2019 +0000
+
+    forgot to upgrade
+
+[33mcommit 9b323dfb7072ac9ab7af4c0eb88924e15295deac[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon May 20 04:59:44 2019 +0000
+
+    forgot to upgrade
+
+[33mcommit cf88bef08364321c07c55e383e4d521dc118bb2d[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon May 20 04:54:34 2019 +0000
+
+    deleted initial migrations
+
+[33mcommit a2c9196851904fbc97b7cb4831ec4cd694ac530f[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 21:29:33 2019 +0000
+
+    real endpoint path
+
+[33mcommit 2c55c46119386d42a879c6806be39cfbf6c9b5e3[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 21:20:36 2019 +0000
+
+    small documentation
+
+[33mcommit 3439023be388b5864034defcf0524184cb3a6e33[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 20:15:20 2019 +0000
+
+    exercise done
+
+[33mcommit 776e098d1a31edd677aeb9c7886af31ae9d133e7[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 19:19:53 2019 +0000
+
+    small fix on yml
+
+[33mcommit c8f3485a20685f637719728dd1ec2e98d068221c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 19:15:14 2019 +0000
+
+    some files
+
+[33mcommit 3a464b4442639b258e5366ad873fd9ea929f1e20[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed May 1 19:14:51 2019 +0000
+
+    some files
+
+[33mcommit 3e5f981a4150b38000ca9f405f2010dfad538b9b[m[33m ([m[1;33mtag: 1.0[m[33m)[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 09:57:07 2019 +0000
+
+    example
+
+[33mcommit 358282df6ca02a22965f634425fc6bdbe1d32eaf[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 05:53:49 2019 -0400
+
+    Update .gitpod.yml
+
+[33mcommit 6d119510faf5c17b058412d642c6977f1bd9d160[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 09:49:32 2019 +0000
+
+    welcome message
+
+[33mcommit 5c808b760308022b3785a61c6bfdeb317cb096f8[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 09:38:46 2019 +0000
+
+    env.example
+
+[33mcommit f23b45aea5c3e6c882a4f836e51575f9fa95743c[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 05:35:49 2019 -0400
+
+    Update README.md
+
+[33mcommit d53d8abb36d7ad4407faaaebd83d0c674bea52cb[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 09:34:55 2019 +0000
+
+    ready
+
+[33mcommit 886b7a6c4a3634a9d492a83188a681ce2da457cf[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 09:27:11 2019 +0000
+
+    almost ready
+
+[33mcommit 426dfc301be7002408c5be6950d7d8fc17373040[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 05:14:01 2019 -0400
+
+    Update .gitpod.yml
+
+[33mcommit 4ed064a239b3efdce16b4204967e6b03f02c1604[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 05:12:49 2019 -0400
+
+    Create .gitpod.dockerfile
+
+[33mcommit e6a338afb64e43f33d0e71eed80c1ce62fc469da[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 07:15:08 2019 +0000
+
+    more automation
+
+[33mcommit cc530c59658a2d4b949779da44491bf6c8a01652[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Sat Apr 27 07:05:56 2019 +0000
+
+    env vars
+
+[33mcommit dee5c60d444f7f5ac2f06adb505f8152d1fbed30[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 16:16:39 2019 +0000
+
+    fail attempt to resolve e0401 pylint error
+
+[33mcommit 4b8c7bfa66805d900a9e28418ebce88bfc986372[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 07:14:36 2019 +0000
+
+    not ready yet
+
+[33mcommit c1b3f9e9e55f6db45c7f59c9e146ec269b72cb0b[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 06:42:11 2019 +0000
+
+    lets see
+
+[33mcommit c0b1dd0c3e05105af03b46bff9eae0599fb2ee4d[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 06:36:14 2019 +0000
+
+    test
+
+[33mcommit 42d584e87897e2ed76954cb70126718d80a07c8e[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 06:29:56 2019 +0000
+
+    tests
+
+[33mcommit d1b82292a13bc8737663cedad022eb705fc3bff5[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 06:20:16 2019 +0000
+
+    some minor changes
+
+[33mcommit 980283e86bc92fc90f8fc1ddf3ba3c9a3c0ce065[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Apr 26 06:08:36 2019 +0000
+
+    testing dockerfile
+
+[33mcommit 35eef13065d66039de6eb49da4a696bca9166ac2[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 21:13:23 2019 -0400
+
+    Update app.py
+
+[33mcommit dceecdced3826f16ba3f62331b5fd6187aaa05b9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 21:11:58 2019 -0400
+
+    Update README.md
+
+[33mcommit 25d19cd88bb38215c6f37a51aa1a9ece44b52bb9[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 21:10:28 2019 -0400
+
+    Update README.md
+
+[33mcommit c705f2bd6d3134137d9e4d9a6f13072d77792368[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 21:02:18 2019 -0400
+
+    Update README.md
+
+[33mcommit 3a44b13dba40ad82e03f8c319c91ba7458fd0046[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 20:32:17 2019 -0400
+
+    Update README.md
+
+[33mcommit 2f728f4a8c504b691fbf5edfb7e35c05a517a2dd[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 20:29:35 2019 -0400
+
+    Update README.md
+
+[33mcommit c40434d9d6b9ea50a57449b1bd1bc13edebb8374[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Wed Apr 24 20:19:19 2019 -0400
+
+    Update README.md
+
+[33mcommit 9e11eef009fba33cbf87ec13c4de2bdd86ad22d5[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Apr 22 16:14:06 2019 +0000
+
+    removed first migration
+
+[33mcommit 985e2c3a3c89f52c44bf91ee0a9ffad322145ad1[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Apr 22 16:13:11 2019 +0000
+
+    updated docs
+
+[33mcommit 204ab7dafbbe89e084d38dcd9c1c2b23a213b0cd[m
+Merge: 8f86492 8d67fb4
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Fri Mar 29 18:42:37 2019 -0400
+
+    Merge pull request #2 from nachovz/patch-1
+    
+    Update README.md
+
+[33mcommit 8d67fb4e07ac0056d21c8675ca1ca024e49b19b8[m
+Author: Ignacio Cordoba <icordoba@4geeks.co>
+Date:   Fri Mar 29 11:35:54 2019 -0400
+
+    Update README.md
+
+[33mcommit 8f86492c05f5b210f2df639de7ce82b6f54f3fcb[m
+Merge: 342d3dd 8c479d2
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Tue Mar 26 16:49:46 2019 -0400
+
+    Merge pull request #1 from nachovz/master
+    
+    Readme
+
+[33mcommit 8c479d2fdcd3cb706f86cd897c63f994ecbd735a[m
+Author: Ignacio Cordoba <icordoba@4geeks.co>
+Date:   Mon Mar 25 19:17:12 2019 +0000
+
+    Readme
+
+[33mcommit 342d3ddc48a4745d93c107088cddccde75443d31[m
+Author: Alejandro Sanchez <aalejo@gmail.com>
+Date:   Mon Mar 25 10:54:49 2019 -0400
+
+    Create README.md
