@@ -9,8 +9,8 @@ class Professional(db.Model):
     #salt = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     profession = db.Column(db.String(50), nullable=False)
-    phone = db.Column(db.String(15), unique=True, nullable=False)
-    location = db.Column(db.String (20), nullable=False)
+    phone = db.Column(db.String(25), unique=True, nullable=False)
+    location = db.Column(db.String (50), nullable=False)
 
     def __repr__(self):
         return '<Professional %r>' % self.username

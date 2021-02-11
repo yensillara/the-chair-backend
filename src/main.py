@@ -35,12 +35,12 @@ def handle_professional():
     professionals = Professional.query.all()
     response_body = []
     for professional in professionals:
-        response_body.append(profesional.serialize())
+        response_body.append(professional.serialize())
     return jsonify(response_body), 200
 
-@app.route('/profesionals', methods=['POST'])
+@app.route('/professionals', methods=['POST'])
 def add_new_professional():
-    body = request_json()
+    body = request.get_json()
     print (body)
     new_professional = Professional(
         full_name = body ["full_name"],
@@ -51,13 +51,40 @@ def add_new_professional():
     )
     db.session.add(new_professional)
     try:
-        bd.session.commit()
+        db.session.commit()
         print (new_professional.serialize())
-        return jsonify (new_contact.serialize()), 201
+        return jsonify (new_professional.serialize()), 201
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE"), 500
 
+@app.route('/professionals/<int:id>', methods=['GET','PATCH'])
+def update_professional(id):
+    if request.method == 'GET':
+        professional = Professional.query.get(id)
+        return jsonify (professional.serialize()), 200
+    if request.method == 'PATCH':
+        professional = Professional.query.get(id)
+        body = request.get_json()
+        if "full_name" in body:
+            professional.full_name = body ['full_name']
+        if "email" in body:
+            professional.email = body ['email']
+        if "phone" in body:
+            professional.phone = body ['phone']
+        if "location" in body:
+            professional.location = body ['location']
+        db.session.commit()
+        return jsonify (professional.serialize()),200
+
+@app.route('/professionals/<int:id>', methods=['DELETE'])
+def remove_delete(id):
+    professional = Professional.query.get(id)
+    if professional is None:
+        raise APIException('Professional not found', status_code=404)
+    db.session.delete(professional)
+    db.session.commit()
+    return jsonify([]), 204
 
 
 # this only runs if `$ python src/main.py` is executed
