@@ -99,7 +99,7 @@ def handle_client():
 
 @app.route('/clients', methods=['POST'])
 def add_new_client():
-    body = request.get_json
+    body = request.get_json()
     print (body)
     new_client = Client (
         full_name = body ['full_name'],
