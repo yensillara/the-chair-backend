@@ -8,11 +8,13 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
+from flask_jwt_extended import JWTManager, create_access_token
 from models import db, Professional, Client
 #from models import Person
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+app.config['JWT_SECRET_KEY'] = 'paloma'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_CONNECTION_STRING')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
@@ -44,6 +46,7 @@ def add_new_professional():
     print (body)
     new_professional = Professional(
         full_name = body ["full_name"],
+        password = body ["password"],
         email = body ["email"],
         profession = body ["profession"],
         phone = body ["phone"],
@@ -136,6 +139,33 @@ def update_client(id):
             client_location = body ['location'],
         db.session.commit()
         return jsonify (client.serialize()), 200
+
+@app.route("/login", methods=["POST"])
+def handle_login():
+    """ 
+        check password for user with email = body['email']
+        and return token if match.
+    """
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+    params = request.get_json()
+    email = params.get('email', None)
+    password = params.get('password', None)
+    if not email:
+        return jsonify({"msg": "Missing email parameter"}), 400
+    if not password:
+        return jsonify({"msg": "Missing password parameter"}), 400
+    professional = Professional.query.filter_by(email=email).one_or_none()
+    if not professional:
+        return jsonify({"msg": "User does not exist"}), 404
+    if professional.check_password(password):
+        response = {'jwt': create_jwt(identity=professional.email)}
+        return jsonify(response), 200
+    else:
+        return jsonify({"msg": "Bad credentials"}), 401
+    # if username != 'test' or password != 'test':
+    #     return jsonify({"msg": "Bad username or password"}), 401, 403
+    # Identity can be any data that is json serializable
 
 
 # this only runs if `$ python src/main.py` is executed
