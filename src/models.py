@@ -9,33 +9,15 @@ db = SQLAlchemy()
 class Professional(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(120), nullable=False)
-    hashed_password = db.Column(db.String(8), nullable=False)
-    salt = db.Column(db.String(120), nullable=False)
+    #hashed_password = db.Column(db.String(8), nullable=False)
+    #salt = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     profession = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(25), unique=True, nullable=False)
     location = db.Column(db.String (50), nullable=False)
 
     
-    def __init__(self, data):
-        self.email = data['email']
-        self.salt = b64encode(os.urandom(4)).decode("utf-8")
-        self.hashed_password = self.set_password(
-            data["password"]
-        )
-    def set_password(self, password):
-        return generate_password_hash(
-             f"{password}{self.salt}"
-
-    )        
-    def check_password(self, password):
-        return check_password_hash(
-             self.hashed_password,
-             f"{password}{self.salt}"
-        )
-           
-
-
+   
     def __repr__(self):
         return '<Professional %r>' % self.username
 
