@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from models import db, Professional
+from models import db, Professional, Client
 #from models import Person
 
 app = Flask(__name__)
@@ -56,7 +56,7 @@ def add_new_professional():
         return jsonify (new_professional.serialize()), 201
     except Exception as error:
         print (error.args)
-        return jsonify ("NOT CREATE"), 500
+        return jsonify ("NOT CREATE PROFESSIONAL"), 500
 
 @app.route('/professionals/<int:id>', methods=['GET','PATCH'])
 def update_professional(id):
@@ -85,6 +85,57 @@ def remove_delete(id):
     db.session.delete(professional)
     db.session.commit()
     return jsonify([]), 204
+
+@app.route('/clients', methods=['GET'])
+def handle_client():
+    clients = Client.query.all()
+    response_body=[]
+    for client in clients: 
+        response_body.append (client.serialize())
+    return jsonify(response_body), 200
+
+@app.route('/clients', methods=['POST'])
+def add_new_client():
+    body = request.get_json
+    print (body)
+    new_client = Client (
+        full_name = body ['full_name'],
+        email = body ['email'],
+        phone = body ['phone'],
+        location = body ['location'],
+    )
+    db.session.add(new_client)
+    try:
+        db.session.commit()
+        print (new_client.serialize())
+        return jsonify (new_client.serialize()), 201
+    except Exception as error:
+        print (error.args)
+        return jsonify ("NOT CREATE CLIENT"), 500
+
+@app.route('/client/<int:id>', methods=['DELETE'])
+def remove_client(id):
+    professional = Professional.query.get(id)
+    db.session.delete(client)
+    db.session.commit()
+    return jsonify ([]), 204
+
+@app.route('/client/<int:id>', methods=['GET', 'PATCH'])
+def update_client(id):
+    if request.method == ['GET']:
+        client = Client.query.get(id)
+        return jsonify (client.serialize()), 200
+    if request.method == ['PATCH']:
+        client = Client.query.get(id)
+        body = request.body_json()
+        if 'email' in body:
+            client_email = body ['email'],
+        if 'phone' in body:
+            client_phone = body ['phone'],
+        if 'location' in body:
+            client_location = body ['location'],
+        db.session.commit()
+        return jsonify (client.serialize()), 200
 
 
 # this only runs if `$ python src/main.py` is executed

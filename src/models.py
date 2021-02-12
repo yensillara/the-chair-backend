@@ -5,7 +5,7 @@ db = SQLAlchemy()
 class Professional(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(120), nullable=False)
-    #hashed.password = db.Column(db.String(8), nullable=False)
+    password = db.Column(db.String(8), nullable=False)
     #salt = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     profession = db.Column(db.String(50), nullable=False)
@@ -24,3 +24,21 @@ class Professional(db.Model):
             "phone": self.phone,
             "location": self.location,
         }
+
+class Client(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    professional_id = db.Column(db.Integer, nullable=False)
+    full_name = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    phone = db.Column(db.String(25), nullable=False)
+    location = db.Column(db.String(50), nullable=False)
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "full_name":self.full_name,
+            "email":self.email,
+            "phone":self.phone,
+            "location":self.location,
+        }
+
