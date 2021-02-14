@@ -8,15 +8,17 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 from models import db, Professional, Client
 #from models import Person
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-app.config['JWT_SECRET_KEY'] = 'paloma'
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+#aquí cambiamos a super-secret
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_CONNECTION_STRING')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+jwt = JWTManager(app) #se agrega para evitar este error 'You must initialize a JWTManager with this flask application before using this method
 MIGRATE = Migrate(app, db)
 db.init_app(app)
 CORS(app)
@@ -103,6 +105,7 @@ def add_new_client():
     print (body)
     new_client = Client (
         full_name = body ['full_name'],
+        #professional_id = body [int],
         email = body ['email'],
         phone = body ['phone'],
         location = body ['location'],
@@ -159,14 +162,20 @@ def handle_login():
     if not professional:
         return jsonify({"msg": "User does not exist"}), 404
     if professional.check_password(password):
-        response = {'jwt': create_jwt(identity=professional.email)}
+        response = {'jwt': create_access_token (identity=professional.email)}
         return jsonify(response), 200
     else:
         return jsonify({"msg": "Bad credentials"}), 401
-    # if username != 'test' or password != 'test':
-    #     return jsonify({"msg": "Bad username or password"}), 401, 403
+    if username != 'test' or password != 'test':
+        return jsonify({"msg": "Bad username or password"}), 401, 403
     # Identity can be any data that is json serializable
 
+@app.route('/seguro')
+@jwt_required
+def handle_seguro():
+    email = get_jwt_identity()
+    #esto devuelve la identidad del token
+    return jsonify ({"msg":f"Hello,{email}"})
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
