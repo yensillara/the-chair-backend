@@ -8,7 +8,7 @@ from flask_swagger import swagger
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user
 from models import db, Professional, Client
 #from models import Person
 
@@ -100,12 +100,14 @@ def handle_client():
     return jsonify(response_body), 200
 
 @app.route('/clients', methods=['POST'])
+@jwt_required
 def add_new_client():
     body = request.get_json()
     print (body)
+    current_user = get_current_user()
     new_client = Client (
         full_name = body ['full_name'],
-        #professional_id = body [int],
+        professional_id = current_user_id,
         email = body ['email'],
         phone = body ['phone'],
         location = body ['location'],

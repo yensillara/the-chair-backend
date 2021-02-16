@@ -61,7 +61,7 @@ class Professional(db.Model):
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    professional_id = db.Column(db.Integer, nullable=False)
+    professional_id = db.Column(db.Integer, db.ForeignKey ('professional.id'))
     full_name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(25), nullable=False)
@@ -70,7 +70,7 @@ class Client(db.Model):
     def serialize(self):
         return{
             "id": self.id,
-            "professional_id":self.profesional_id,
+            "professional_id":self.professional_id,
             "full_name":self.full_name,
             "email":self.email,
             "phone":self.phone,
