@@ -61,11 +61,24 @@ class Professional(db.Model):
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    professional_id = db.Column(db.Integer, db.ForeignKey ('professional.id'))
+    professional_id = db.Column(db.Integer, db.ForeignKey ('professional.id'), nullable=False)
     full_name = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(25), nullable=False)
     location = db.Column(db.String(50), nullable=False)
+
+    def __init__(self,**body):
+        #con esta recibimos lo que nos envía la función constructora
+        self.full_name = body ['full_name']
+        self.email = body ['email']
+        self.professional_id = professional_id
+        self.phone = body ['phone']
+        self.location = body ['location']
+
+    @classmethod
+    def create (cls, **body):
+        new_client=cls(body)
+        return add_new_cliente  
 
     def serialize(self):
         return{
