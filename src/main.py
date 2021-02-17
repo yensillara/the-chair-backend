@@ -152,23 +152,25 @@ def update_client(id):
 def create_new_project():
     body = request.get_json()
     print (body)
-    current_client = get_jwt_identity()
-    client = Client.query.filter_by(id=current_id).one_or_none()
     if professional is None:
         return jsonify ({"msg":"Not found"}), 404
     new_project = Project (
         project_name = body ['project_name'],
-        client_id = client.id,
+        client_id = body ["client_id"],
+        tipology_id = body ["tipology_id"]
         final_notes = body ['final_notes']
     )
     db.session.add(new_project)
     try:
         db.session.commit()
         print (new_project.serialize())
-        return jsonify (new_project.serialize()), 201
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROJECT"), 500
+    new_workspace = ProjectWorkSpace(
+        workspace_type_id = body ["workspace_type_id"], 
+        project_id = new_project.id  
+        )
 
 @app.route("/login", methods=["POST"])
 def handle_login():
