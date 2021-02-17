@@ -3,7 +3,9 @@ import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
 from enum import Enum
-from SQLAlchemy import Integer, Enum
+from sqlalchemy import Integer, Enum
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import *
 
 
 db = SQLAlchemy()
@@ -97,8 +99,36 @@ class MyEnum(enum.Enum):
     oficina = 3
     local_comercial = 4
 
-class Tipology(db.Model):
-    id = db.Column(db.Integer, primary_Key=True)
-    project_id = db.Column(db.Integer, db.Foreign_Key ('project_id'), nullable=False)
-    category = db.Column(Enum(MyEnum)) 
+Base = declarative_base() 
+class Tipology(Base):
+    __tablename__ = 'tipology'
+    id = Column(Integer, primary_key=True)
+    project_id = Column(Integer, Foreign_Key ('project_id'), nullable=False)
+    category = Column(Enum(MyEnum))
+
+#class Tipology(db.Model):
+    #id = db.Column(db.Integer, primary_Key=True)
+    #project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+    #category = db.Column(db.Enum(MyEnum)) 
+
+def serialize(self):
+        return{
+            "id":self.id,
+            "project_id":self.project_id,
+            "category":self.category, 
+        }
+
+
+
+#Opciones de cómo expresarlo en codigo:
         
+#class Tipology(Enum):
+    #id = db.Column(db.Integer, primary_Key=True)
+    #project_id = db.Column(db.Integer, db.Foreign_Key ('project_id'), nullable=False)
+    #category = db.Column(Enum(MyEnum))     
+
+
+
+
+
+    
