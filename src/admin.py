@@ -1,6 +1,6 @@
 import os
 from flask_admin import Admin
-from models import db, Professional, Client
+from models import db, Professional, Client, Project
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
