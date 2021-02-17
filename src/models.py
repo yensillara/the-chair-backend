@@ -2,6 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
+from enum import Enum
+from SQLAlchemy import Integer, Enum
 
 
 db = SQLAlchemy()
@@ -89,4 +91,14 @@ class Client(db.Model):
             "phone":self.phone,
             "location":self.location,
         }
+class MyEnum(enum.Enum):
+    unifamiliar = 1
+    multifamiliar = 2
+    oficina = 3
+    local_comercial = 4
 
+class Tipology(db.Model):
+    id = db.Column(db.Integer, primary_Key=True)
+    project_id = db.Column(db.Integer, db.Foreign_Key ('project_id'), nullable=False)
+    category = db.Column(Enum(MyEnum)) 
+        
