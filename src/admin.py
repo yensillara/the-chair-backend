@@ -1,10 +1,6 @@
 import os
 from flask_admin import Admin
-<<<<<<< HEAD
-from models import db, Professional, Client, Project
-=======
 from models import db, Professional, Client, Tipology
->>>>>>> classtipology
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):

@@ -94,7 +94,6 @@ class Client(db.Model):
             "location":self.location,
         }
 
-<<<<<<< HEAD
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
@@ -112,8 +111,6 @@ class Project(db.Model):
             "project_name": self.project_name,
             "notes": self.notes
         }
-
-=======
 
 #Class Tipology:
 
@@ -166,4 +163,3 @@ def serialize(self):
 
 
     
->>>>>>> classtipology
