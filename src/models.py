@@ -93,28 +93,6 @@ class Client(db.Model):
             "location":self.location,
         }
 
-<<<<<<< HEAD
-class Project(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
-    tipology = db.Column(db.Integer, db.ForeingKey('tipology.id'), nullable=False)
-    # remodeling_type_id = db.Column(db.Integer, db.Foreignkey('remodeling.id'), nullable=False)
-    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace.id'), nuallable=True)
-    project_name = db.Column(db.String(120), nullable=False)
-    final_notes = db.Column(db.String(300), nullable=False)
-
-    def serialize(self):
-        return{
-            "id": self.id,
-            "client_id": self.client_id,
-            "tipology": self.tipology,
-            # "remodeling_type_id": self.remodeling_type.id,
-            # "workspace_type_id": self.workspace_type_id,
-            "project_name": self.project_name,
-            "final_notes": self.final_notes
-        }
-
-=======
 
 #Class Tipology:
 
@@ -167,4 +145,3 @@ def serialize(self):
 
 
     
->>>>>>> classtipology
