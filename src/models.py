@@ -2,6 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
+import enum
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import *
 
 
 db = SQLAlchemy()
@@ -90,6 +93,7 @@ class Client(db.Model):
             "location":self.location,
         }
 
+<<<<<<< HEAD
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
@@ -110,3 +114,57 @@ class Project(db.Model):
             "final_notes": self.final_notes
         }
 
+=======
+
+#Class Tipology:
+
+class Tipologies(enum.Enum):
+    UNIFAMILIAR = 1
+    MULTIFAMILIAR = 2
+    OFICINA = 3
+    LOCAL_COMERCIAL = 4
+
+ 
+#class Tipology(db.Model):
+    
+    #id = Column(Integer, primary_key=True)
+    #project_id = Column(Integer, Foreign_Key ('project_id'), nullable=False)
+    #value = Column(Enum(MyEnum))
+
+class Tipology(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+    category = db.Column(db.Enum(Tipologies), nullable=False, default=1) 
+
+def serialize(self):
+        return{
+            "id":self.id,
+            "project_id":self.project_id,
+            "category":self.category, 
+        }
+
+
+
+#Opciones de cómo expresarlo en codigo:
+        
+#class Tipology(Enum):
+    #id = db.Column(db.Integer, primary_Key=True)
+    #project_id = db.Column(db.Integer, db.Foreign_Key ('project_id'), nullable=False)
+    #category = db.Column(Enum(MyEnum))     
+
+
+#class TipologyType(enum.Enum):
+   #UNIFAMILIAR = 1
+   #MULTIFAMILIAR = 2
+   #OFICINA = 3
+   #LOCAL_COMERCIAL = 4
+
+
+#class MyTable(db.Model):
+   #id = db.Column(db.Integer, primary_key = True)
+   #project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+   #tipology_type = db.Column(db.Enum(TipologyType))
+
+
+    
+>>>>>>> classtipology
