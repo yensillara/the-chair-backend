@@ -2,8 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
-from enum import Enum
-from sqlalchemy import Integer, Enum
+import enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import *
 
@@ -93,23 +92,27 @@ class Client(db.Model):
             "phone":self.phone,
             "location":self.location,
         }
-class MyEnum(enum.Enum):
-    unifamiliar = 1
-    multifamiliar = 2
-    oficina = 3
-    local_comercial = 4
 
-Base = declarative_base() 
-class Tipology(Base):
-    __tablename__ = 'tipology'
-    id = Column(Integer, primary_key=True)
-    project_id = Column(Integer, Foreign_Key ('project_id'), nullable=False)
-    category = Column(Enum(MyEnum))
 
+#Class Tipology:
+
+class Tipologies(enum.Enum):
+    UNIFAMILIAR = 1
+    MULTIFAMILIAR = 2
+    OFICINA = 3
+    LOCAL_COMERCIAL = 4
+
+ 
 #class Tipology(db.Model):
-    #id = db.Column(db.Integer, primary_Key=True)
-    #project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
-    #category = db.Column(db.Enum(MyEnum)) 
+    
+    #id = Column(Integer, primary_key=True)
+    #project_id = Column(Integer, Foreign_Key ('project_id'), nullable=False)
+    #value = Column(Enum(MyEnum))
+
+class Tipology(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+    category = db.Column(db.Enum(Tipologies), nullable=False, default=1) 
 
 def serialize(self):
         return{
@@ -128,7 +131,17 @@ def serialize(self):
     #category = db.Column(Enum(MyEnum))     
 
 
+#class TipologyType(enum.Enum):
+   #UNIFAMILIAR = 1
+   #MULTIFAMILIAR = 2
+   #OFICINA = 3
+   #LOCAL_COMERCIAL = 4
 
+
+#class MyTable(db.Model):
+   #id = db.Column(db.Integer, primary_key = True)
+   #project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+   #tipology_type = db.Column(db.Enum(TipologyType))
 
 
     
