@@ -148,6 +148,14 @@ def update_client(id):
         db.session.commit()
         return jsonify (client.serialize()), 200
 
+@app.route('/projects', methods=['GET'])
+def handle_project():
+    projects = Project.query.all()
+    response_body=[]
+    for project in projects: 
+        response_body.append (project.serialize())
+    return jsonify(response_body), 200
+
 @app.route('/projects', methods=['POST'])
 def create_new_project():
     body = request.get_json()
@@ -157,8 +165,8 @@ def create_new_project():
     new_project = Project (
         project_name = body ['project_name'],
         client_id = body ["client_id"],
-        tipology_id = body ["tipology_id"]
-        final_notes = body ['final_notes']
+        tipology_id = body ["tipology_id"],
+        notes = body ['notes']
     )
     db.session.add(new_project)
     try:
@@ -171,6 +179,28 @@ def create_new_project():
         workspace_type_id = body ["workspace_type_id"], 
         project_id = new_project.id  
         )
+
+@app.route('/projects/<int:id>', methods=['GET', 'PATCH'])
+def update_project(id):
+    if request.method == ['GET']:
+        project = Project.query.get(id)
+        return jsonify (project.serialize()), 200
+    if request.method == ['PATCH']:
+        project = Project.query.get(id)
+        body = request.body_json()
+        if 'project_name' in body:
+            project_name = body ['project_name'],
+        if 'notes' in body:
+            project_notes = body ['notes'],
+        db.session.commit()
+        return jsonify (project.serialize()), 200
+
+@app.route('/projects/<int:id>', methods=['DELETE'])
+def remove_project(id):
+    project = Project.query.get(id)
+    db.session.delete(project)
+    db.session.commit()
+    return jsonify ([]), 204
 
 @app.route("/login", methods=["POST"])
 def handle_login():
