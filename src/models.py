@@ -5,7 +5,7 @@ from base64 import b64encode
 import enum
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import *
-
+from sqlalchemy.orm import backref
 
 db = SQLAlchemy()
 
@@ -20,9 +20,6 @@ class Professional(db.Model):
     phone = db.Column(db.String(25), unique=True, nullable=False)
     location = db.Column(db.String (50), nullable=False)
     clients = db.relationship("Client", backref="professional")
-  
-    # def __repr__(self):
-    #     return '<Professional %r>' % self.username
 
     def __init__(self,**body):
         #con esta recibimos lo que nos envía la función constructora
@@ -69,15 +66,7 @@ class Client(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(25), nullable=False)
     location = db.Column(db.String(50), nullable=False)
-    project = db.relationship("Project", backref="client")
-
-    # def __init__(self,**body):
-    #     #con esta recibimos lo que nos envía la función constructora
-    #     self.full_name = body ['full_name']
-    #     self.email = body ['email']
-    #     self.professional_id = professional_id
-    #     self.phone = body ['phone']
-    #     self.location = body ['location']
+    projects = db.relationship("Project")
 
     @classmethod
     def create (cls, **body):
@@ -97,22 +86,21 @@ class Client(db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
-    #tipology_id = db.Column(db.Integer, db.ForeingKey('tipology.id'), nullable=False)
-    #workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace.id'), nuallable=True)
+    #tipology_id = db.Column(db.Integer, db.ForeignKey('tipology.id'), nullable=False)
+    tipology = db.relationship("Tipology", backref=backref("project", uselist=False))
+    #workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace.id'), nullable=True)
     project_name = db.Column(db.String(120), nullable=False)
-    notes = db.Column(db.String(300), nullable=False)
+    notes = db.Column(db.String(300), nullable=True)
 
     def serialize(self):
         return{
             "id": self.id,
             "client_id": self.client_id,
-            # "tipology_id": self.tipology_id,
-            # "workspace_type_id": self.workspace_type_id,
+            "tipology_id": self.tipology_id,
+            #"workspace_type_id": self.workspace_type_id,
             "project_name": self.project_name,
             "notes": self.notes
         }
-
-#Class Tipology:
 
 class Tipologies(enum.Enum):
     UNIFAMILIAR = 1
@@ -120,16 +108,9 @@ class Tipologies(enum.Enum):
     OFICINA = 3
     LOCAL_COMERCIAL = 4
 
- 
-#class Tipology(db.Model):
-    
-    #id = Column(Integer, primary_key=True)
-    #project_id = Column(Integer, Foreign_Key ('project_id'), nullable=False)
-    #value = Column(Enum(MyEnum))
-
 class Tipology(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey ('project.id'), nullable=False)
     category = db.Column(db.Enum(Tipologies), nullable=False, default=1) 
 
 def serialize(self):
@@ -138,28 +119,3 @@ def serialize(self):
             "project_id":self.project_id,
             "category":self.category, 
         }
-
-
-
-#Opciones de cómo expresarlo en codigo:
-        
-#class Tipology(Enum):
-    #id = db.Column(db.Integer, primary_Key=True)
-    #project_id = db.Column(db.Integer, db.Foreign_Key ('project_id'), nullable=False)
-    #category = db.Column(Enum(MyEnum))     
-
-
-#class TipologyType(enum.Enum):
-   #UNIFAMILIAR = 1
-   #MULTIFAMILIAR = 2
-   #OFICINA = 3
-   #LOCAL_COMERCIAL = 4
-
-
-#class MyTable(db.Model):
-   #id = db.Column(db.Integer, primary_key = True)
-   #project_id = db.Column(db.Integer, db.ForeignKey ('project_id'), nullable=False)
-   #tipology_type = db.Column(db.Enum(TipologyType))
-
-
-    

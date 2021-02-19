@@ -124,14 +124,14 @@ def add_new_client():
         print (error.args)
         return jsonify ("NOT CREATE CLIENT"), 500
 
-@app.route('/client/<int:id>', methods=['DELETE'])
+@app.route('/clients/<int:id>', methods=['DELETE'])
 def remove_client(id):
     professional = Professional.query.get(id)
     db.session.delete(client)
     db.session.commit()
     return jsonify ([]), 204
 
-@app.route('/client/<int:id>', methods=['GET', 'PATCH'])
+@app.route('/clients/<int:id>', methods=['GET', 'PATCH'])
 def update_client(id):
     if request.method == ['GET']:
         client = Client.query.get(id)
@@ -166,7 +166,6 @@ def create_new_project():
         project_name = body ['project_name'],
         client_id = body ["client_id"],
         tipology_id = body ["tipology_id"],
-        notes = body ['notes']
     )
     db.session.add(new_project)
     try:
@@ -175,10 +174,21 @@ def create_new_project():
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROJECT"), 500
+    add_notes = Project(
+        notes = body ["notes"],
+        project_id = new_project.id
+        )
+    db.session.add(add_notes)
+    db.session.commit()
+    print (add_notes.serialize())
     new_workspace = ProjectWorkSpace(
         workspace_type_id = body ["workspace_type_id"], 
         project_id = new_project.id  
-        )
+    )
+    db.session.add(new_workspace)
+    db.session.commit()
+    print (new_workspace.serialize())
+    
 
 @app.route('/projects/<int:id>', methods=['GET', 'PATCH'])
 def update_project(id):
