@@ -145,17 +145,3 @@ def serialize(self):
             "workspace_name":self.workspace_name, 
         }  
 
-#Class ProjectWorkSpace:
-
-# class ProjectWorkSpace(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     workspace_type_id = db.Column(db.Integer, db.ForeignKey ('workspace_type.id'), nullable=False)
-#     design_style_id =  db.Column(db.Integer, db.ForeignKey ('design_style.id'), nullable=False)
-#     furniture_styles = db.Column(db.Integer, db.ForeignKey ('furniture_styles.id'), nullable=False)
-#     accesories_style_id = db.Column(db.Integer, db.ForeignKey ('accesories_style.id'), nullable=False)
-#     color_palettes_id =  db.Column(db.Integer, db.ForeignKey ('color_palettes.id'), nullable=False)
-#     texture = db.Column(db.Integer, db.ForeignKey ('texture.id'), nullable=False)
-#     finishes_palette = db.Column(db.Integer, db.ForeignKey ('finishes_palette.id'), nullable=False)
-#     sketch_image_id = db.Column(db.Integer, db.ForeignKey ('sketch_image.id'), nullable=False)
-    
-#     work_list = db.Column(db.String()
