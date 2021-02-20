@@ -133,14 +133,13 @@ class Project(db.Model):
 
 class Workspace(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    projectworkspace_id = db.Column(db.Integer, db.ForeignKey ('projectworkspace_id'), nullable=False)
     tipology = db.Column(db.Enum(Tipologies), nullable=False, default="Unifamiliar")
     workspace_name = db.Column(db.String(120), nullable=False)
+    projectworkspaces = db.relationship("ProjectWorkSpace", backref = "workspace")
 
 def serialize(self):
         return{
             "id":self.id,
-            "projectworkspace_id":self.projectworkspace_id,
             "tipology": self.tipology.value,
             "workspace_name":self.workspace_name, 
         }  
