@@ -160,34 +160,29 @@ def handle_project():
 def create_new_project():
     body = request.get_json()
     print (body)
-    if professional is None:
-        return jsonify ({"msg":"Not found"}), 404
     new_project = Project (
         project_name = body ['project_name'],
-        client_id = body ["client_id"],
-        tipology_id = body ["tipology_id"],
+        client_id = body ['client_id'],
+        notes = body ['notes'],
+        tipology = body ['tipology']
     )
     db.session.add(new_project)
     try:
         db.session.commit()
         print (new_project.serialize())
+        return jsonify (new_project.serialize()), 201
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROJECT"), 500
-    add_notes = Project(
-        notes = body ["notes"],
-        project_id = new_project.id
-        )
-    db.session.add(add_notes)
-    db.session.commit()
-    print (add_notes.serialize())
-    new_workspace = ProjectWorkSpace(
-        workspace_type_id = body ["workspace_type_id"], 
-        project_id = new_project.id  
-    )
-    db.session.add(new_workspace)
-    db.session.commit()
-    print (new_workspace.serialize())
+    #return jsonify (add_notes.serialize()), 201
+    #new_workspace = ProjectWorkSpace(
+        #workspace_type_id = body ["workspace_type_id"], 
+        #project_id = new_project.id  
+    #)
+    #db.session.add(new_workspace)
+    #db.session.commit()
+    #print (new_workspace.serialize())
+    #return jsonify (new_workspace.serialize()), 201
     
 
 @app.route('/projects/<int:id>', methods=['GET', 'PATCH'])

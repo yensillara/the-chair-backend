@@ -66,7 +66,7 @@ class Client(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(25), nullable=False)
     location = db.Column(db.String(50), nullable=False)
-    projects = db.relationship("Project")
+    projects = db.relationship("Project", backref="client")
 
     @classmethod
     def create (cls, **body):
@@ -83,39 +83,47 @@ class Client(db.Model):
             "location":self.location,
         }
 
+class Tipologies(enum.Enum):
+    UNIFAMILIAR = "Unifamiliar"
+    MULTIFAMILIAR = "Multifamiliar"
+    OFICINA = "Oficina"
+    LOCAL_COMERCIAL = "Local Comercial"
+
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
     #tipology_id = db.Column(db.Integer, db.ForeignKey('tipology.id'), nullable=False)
-    tipology = db.relationship("Tipology", backref=backref("project", uselist=False))
+    tipology = db.Column(db.Enum(Tipologies), nullable=False, default="Unifamiliar")
     #workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace.id'), nullable=True)
     project_name = db.Column(db.String(120), nullable=False)
-    notes = db.Column(db.String(300), nullable=True)
+    notes = db.Column(db.String(300), nullable=False)
+
+    def __init__ (self, client_id, tipology, project_name, notes):
+        self.client_id = client_id
+        self.project_name = project_name
+        self.notes = notes
+        self.tipology = Tipologies(tipology)
 
     def serialize(self):
         return{
             "id": self.id,
             "client_id": self.client_id,
-            "tipology_id": self.tipology_id,
+            "tipology": self.tipology.value,
             #"workspace_type_id": self.workspace_type_id,
             "project_name": self.project_name,
             "notes": self.notes
         }
 
-class Tipologies(enum.Enum):
-    UNIFAMILIAR = 1
-    MULTIFAMILIAR = 2
-    OFICINA = 3
-    LOCAL_COMERCIAL = 4
 
-class Tipology(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey ('project.id'), nullable=False)
-    category = db.Column(db.Enum(Tipologies), nullable=False, default=1) 
 
-def serialize(self):
-        return{
-            "id":self.id,
-            "project_id":self.project_id,
-            "category":self.category, 
-        }
+# class Tipology(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     category = db.Column(db.Enum(Tipologies), nullable=False, default=1)
+#     projects = db.relationship("Project", backref="tipology")
+
+#     def serialize(self):
+#         return{
+#             "id":self.id,
+#             "project_id":self.project_id,
+#             "category":self.category, 
+#         }
