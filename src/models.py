@@ -127,3 +127,34 @@ class Project(db.Model):
 #             "project_id":self.project_id,
 #             "category":self.category, 
 #         }
+
+
+#Class WorkSpace:
+
+class Workspace(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    projectworkspace_id = db.Column(db.Integer, db.ForeignKey ('projectworkspace_id'), nullable=False)
+    tipology_id = db.Column(db.Integer, db.ForeignKey('tipology.id'), nullable=False)
+    workspace_name = db.Column(db.String(120), nullable=False)
+
+def serialize(self):
+        return{
+            "id":self.id,
+            "projectworkspace_id":self.projectworkspace_id,
+            "tipology_id":self.tipology_id,
+            "workspace_name":self.workspace_name, 
+        }  
+
+#Class ProjectWorkSpace:
+
+class ProjectWorkSpace(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey ('workspace_type.id'), nullable=False)
+    design_style_id =  db.Column(db.Integer, db.ForeignKey ('design_style.id'), nullable=False)
+    furniture_styles = db.Column(db.Integer, db.ForeignKey ('furniture_styles.id'), nullable=False)
+    accesories_style_id = db.Column(db.Integer, db.ForeignKey ('accesories_style.id'), nullable=False)
+    texture = db.Column(db.Integer, db.ForeignKey ('texture.id'), nullable=False)
+    finishes_palette = db.Column(db.Integer, db.ForeignKey ('finishes_palette.id'), nullable=False)
+    sketch_image_id = db.Column(db.Integer, db.ForeignKey ('sketch_image.id'), nullable=False)
+    
+    work_list = db.Column(db.String()
