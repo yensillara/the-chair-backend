@@ -329,3 +329,34 @@ class ProjectTexture(db.Model):
         
             
         }
+#Class Finishes:
+class Finishes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    finishes_name = db.Column(db.String(120), nullable=False)
+    image_url = db.Column(db.String(900), nullable=False)
+    projectfinishes = db.relationship("ProjectFinishes", backref="finishes")
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "finishes_name": self.finishes_name,
+            "image_url": self.image_url,
+        }
+
+
+
+# Class ProjectFinishes:
+class ProjectFinishes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+    finishes_id = db.Column(db.Integer, db.ForeignKey('finishes.id'), nullable=False)
+
+    def serialize(self):
+        return{
+            "id":self.id,
+            "workspace_type_id": self.workspace_type_id,
+            "finishes_id": self.finishes_id,
+        
+            
+        }
+
