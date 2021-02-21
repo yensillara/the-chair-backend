@@ -300,3 +300,32 @@ class ColorPalette(db.Model):
             "color_palette_name": self.color_palette_name,
             "image_url": self.image_url,
         }
+#Class Texture:
+class Texture(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    texture_name = db.Column(db.String(120), nullable=False)
+    image_url = db.Column(db.String(900), nullable=False)
+    projecttextures = db.relationship("ProjectTexture", backref="texture")
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "texture_name": self.texture_name,
+            "image_url": self.image_url,
+        }
+
+
+# Class ProjectTexture:
+class ProjectTexture(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+    texture_id = db.Column(db.Integer, db.ForeignKey('texture.id'), nullable=False)
+
+    def serialize(self):
+        return{
+            "id":self.id,
+            "workspace_type_id": self.workspace_type_id,
+            "texture_id": self.texture_id,
+        
+            
+        }

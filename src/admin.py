@@ -1,6 +1,6 @@
 import os
 from flask_admin import Admin
-from models import db, Professional, Client, Workspace, ProjectWorkSpace, DesignStyle, FurnitureStyle, ProjectFurnitureStyle, AccesoriesStyle, ProjectAccesoriesStyle, ColorPalette 
+from models import db, Professional, Client, Workspace, ProjectWorkSpace, DesignStyle, FurnitureStyle, ProjectFurnitureStyle, AccesoriesStyle, ProjectAccesoriesStyle, ColorPalette, Texture, ProjectTexture 
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -19,7 +19,9 @@ def setup_admin(app):
     admin.add_view(ModelView(ProjectFurnitureStyle, db.session))
     admin.add_view(ModelView(AccesoriesStyle, db.session)) 
     admin.add_view(ModelView(ProjectAccesoriesStyle, db.session))
-    admin.add_view(ModelView(ColorPalette, db.session))    
+    admin.add_view(ModelView(ColorPalette, db.session))
+    admin.add_view(ModelView(Texture, db.session))
+    admin.add_view(ModelView(ProjectTexture, db.session))    
 
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))
