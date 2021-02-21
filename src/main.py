@@ -34,6 +34,7 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
+#to get all professionals
 @app.route('/professionals', methods=['GET'])
 def handle_professional():
     professionals = Professional.query.all()
@@ -42,6 +43,7 @@ def handle_professional():
         response_body.append(professional.serialize())
     return jsonify(response_body), 200
 
+#to create a professional
 @app.route('/professionals', methods=['POST'])
 def add_new_professional():
     body = request.get_json()
@@ -63,6 +65,7 @@ def add_new_professional():
         print (error.args)
         return jsonify ("NOT CREATE PROFESSIONAL"), 500
 
+#to update and get a specific professional 
 @app.route('/professionals/<int:id>', methods=['GET','PATCH'])
 def update_professional(id):
     if request.method == 'GET':
@@ -82,6 +85,7 @@ def update_professional(id):
         db.session.commit()
         return jsonify (professional.serialize()),200
 
+#to delete a professional
 @app.route('/professionals/<int:id>', methods=['DELETE'])
 def remove_delete(id):
     professional = Professional.query.get(id)
@@ -91,6 +95,9 @@ def remove_delete(id):
     db.session.commit()
     return jsonify([]), 204
 
+#----------Endpoinst clients 
+
+#to get all clients
 @app.route('/clients', methods=['GET'])
 def handle_client():
     clients = Client.query.all()
@@ -99,6 +106,7 @@ def handle_client():
         response_body.append (client.serialize())
     return jsonify(response_body), 200
 
+#to create a new client
 @app.route('/clients', methods=['POST'])
 @jwt_required
 def add_new_client():
@@ -124,18 +132,19 @@ def add_new_client():
         print (error.args)
         return jsonify ("NOT CREATE CLIENT"), 500
 
-@app.route('/clients/<int:id>', methods=['DELETE'])
+#to delete a specific client
+@app.route('/client/<int:id>', methods=['DELETE'])
 def remove_client(id):
-    professional = Professional.query.get(id)
+    client = Client.query.get(id)
     db.session.delete(client)
     db.session.commit()
     return jsonify ([]), 204
 
-@app.route('/clients/<int:id>', methods=['GET', 'PATCH'])
+@app.route('/client/<int:id>', methods=['GET', 'PATCH'])
 def update_client(id):
     if request.method == ['GET']:
         client = Client.query.get(id)
-        return jsonify (client.serialize()), 200
+        return jsonify (client.serialize()),200
     if request.method == ['PATCH']:
         client = Client.query.get(id)
         body = request.body_json()
@@ -146,8 +155,11 @@ def update_client(id):
         if 'location' in body:
             client_location = body ['location'],
         db.session.commit()
-        return jsonify (client.serialize()), 200
+        return jsonify (client.serialize()),200
 
+#----------Endpoints projects
+
+#to get all projects
 @app.route('/projects', methods=['GET'])
 def handle_project():
     projects = Project.query.all()
@@ -156,6 +168,7 @@ def handle_project():
         response_body.append (project.serialize())
     return jsonify(response_body), 200
 
+#to create a new project
 @app.route('/projects', methods=['POST'])
 def create_new_project():
     body = request.get_json()
@@ -200,6 +213,7 @@ def update_project(id):
         db.session.commit()
         return jsonify (project.serialize()), 200
 
+#to delete a specific project
 @app.route('/projects/<int:id>', methods=['DELETE'])
 def remove_project(id):
     project = Project.query.get(id)
@@ -207,6 +221,7 @@ def remove_project(id):
     db.session.commit()
     return jsonify ([]), 204
 
+#----------Login
 @app.route("/login", methods=["POST"])
 def handle_login():
     """ 
