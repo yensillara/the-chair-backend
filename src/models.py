@@ -144,3 +144,72 @@ def serialize(self):
             "workspace_name":self.workspace_name, 
         }  
 
+# Class ProjectWorkSpace:
+
+class ProjectWorkSpace(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+    design_style_id = db.Column(db.Integer, db.ForeignKey('design_style.id'), nullable=False)
+    furniture_style = db.Column(db.Integer, db.ForeignKey('furniture_style.id'), nullable=False)
+    accesories_style = db.Column(db.Integer, db.ForeignKey('accesories_style.id'), nullable=False)
+    color_palette_id = db.Column(db.Integer, db.ForeignKey('color_palette.id'), nullable=False)
+    texture = db.Column(db.Integer, db.ForeignKey('texture.id'), nullable=False)
+    finishes = db.Column(db.Integer, db.ForeignKey('finishes.id'), nullable=False)
+    sketch_id = db.Column(db.Integer, db.ForeignKey('skecth.id'), nullable=False)
+    # final_notes = db.Column(db.Integer, db.ForeignKey('final_notes.id'), nullable=False)
+    # work_list = db.Column(db.Integer, db.ForeignKey('work_list.id'), nullable=False)
+
+    def __init__ (self, workspace_type_id, design_style_id, furniture_style, accesories_style, color_palette_id, texture, finishes, sketch_id):
+        self.workspace_type_id = workspace_type_id
+        self.design_style_id = design_style_id
+        self.furniture_style = furniture_style
+        self.accesories_style = accesories_style
+        self.color_palette_id = color_palette_id
+        self.texture = texture
+        self.finishes = finishes
+        self.sketch_id = sketch_id
+        # self.final_notes = final_notes
+        # self.work_list = work_list
+        
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "workspace_type_id": self.workspace_type_id,
+             "design_style_id": self.design_style_id,
+             "furniture_style": self.furniture_style,
+             "accesories_style": self.accesories_style,
+             "color_palette_id": self.color_palette_id,
+             "texture": self.texture,
+             "finishes": self.finishes,
+             "sketch_id": self.sketch_id,
+        }
+
+# Supongamos, que relfejado en el diagrama de clases, 
+# la relación de 1..* entre ProjectWorkSpace 
+# y Las demás clases Projects también estén incluidas; 
+# se vería de la siguiente manera: 
+
+# class ProjectWorkSpace(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+#     project_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+#     design_style_id = db.Column(db.Integer, db.ForeignKey('design_style.id'), nullable=False)
+#     furnitures = db.relationship("FurnitureStyle", backref="projectworkspace")
+#     accesories = db.relationship("AccesoriesStyle", backref="projectworkspace")
+#     color_palette_id = db.Column(db.Integer, db.ForeignKey('color_palette.id'), nullable=False)
+#     texture = db.relationship("Texture", backref="projectworkspace")
+#     finishes = db.relationship("Finishes", backref="projectworkspace")
+#     sketch_id = db.Column(db.Integer, db.ForeignKey('skecth.id'), nullable=False)
+#     # final_notes = db.Column(db.Integer, db.ForeignKey('final_notes.id'), nullable=False)
+#     # work_list = db.Column(db.Integer, db.ForeignKey('work_list.id'), nullable=False)
+
+
+#     def serialize(self):
+#         return{
+#             "id": self.id,
+#             "workspace_type_id": self.workspace_type_id,
+#              "design_style_id": self.design_style_id,
+#              "color_palette_id": self.color_palette_id,
+#              "sketch_id" self.sketch_id,
+#         }
