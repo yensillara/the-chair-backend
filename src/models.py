@@ -287,3 +287,16 @@ class ProjectAccesoriesStyle(db.Model):
             
         }
 
+#Class ColorPalette:
+class ColorPalette(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    color_palette_name = db.Column(db.String(120), nullable=False)
+    image_url = db.Column(db.String(900), nullable=False)
+    projectworkspaces = db.relationship("ProjectWorkSpace", backref="colorpalette")
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "color_palette_name": self.color_palette_name,
+            "image_url": self.image_url,
+        }
