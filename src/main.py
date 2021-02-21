@@ -126,10 +126,12 @@ def add_new_client():
 
 @app.route('/clients/<int:id>', methods=['DELETE'])
 def remove_client(id):
-    professional = Professional.query.get(id)
+    client = Client.query.get(id)
+    if client is None:
+        raise APIException('Client not found', status_code=404)
     db.session.delete(client)
     db.session.commit()
-    return jsonify ([]), 204
+    return jsonify([]), 204
 
 @app.route('/clients/<int:id>', methods=['GET', 'PATCH'])
 def update_client(id):
