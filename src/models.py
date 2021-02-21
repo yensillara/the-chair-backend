@@ -256,4 +256,34 @@ class ProjectFurnitureStyle(db.Model):
             "furniture_style_id": self.furniture_style_id,
         
             
-        }        
+        } 
+# Class AccesoriesStyle:
+class AccesoriesStyle(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    accesories_style_name = db.Column(db.String(120), nullable=False)
+    image_url = db.Column(db.String(900), nullable=False)
+    projectaccesoriesstyles = db.relationship("ProjectAccesoriesStyle", backref="accesoriestyle")
+
+    def serialize(self):
+        return{
+            "id":self.id,
+            "accesories_style_name": self.accesories_style_name,
+            "image_url": self.image_url,
+            
+        }
+
+# Class ProjectAccesoriesStyle:
+class ProjectAccesoriesStyle(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+    accesories_style_id = db.Column(db.Integer, db.ForeignKey('accesories_style.id'), nullable=False)
+
+    def serialize(self):
+        return{
+            "id":self.id,
+            "workspace_type_id": self.workspace_type_id,
+            "accesories_style_id": self.accesories_style_id,
+        
+            
+        }
+
