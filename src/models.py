@@ -148,7 +148,7 @@ def serialize(self):
 
 class ProjectWorkSpace(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace_type.id'), nullable=False)
+    workspace_type_id = db.Column(db.Integer, db.ForeignKey('workspace.id'), nullable=False)
     design_style_id = db.Column(db.Integer, db.ForeignKey('design_style.id'), nullable=False)
     furniture_style = db.Column(db.Integer, db.ForeignKey('furniture_style.id'), nullable=False)
     accesories_style = db.Column(db.Integer, db.ForeignKey('accesories_style.id'), nullable=False)
