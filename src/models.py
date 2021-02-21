@@ -213,3 +213,17 @@ class ProjectWorkSpace(db.Model):
 #              "color_palette_id": self.color_palette_id,
 #              "sketch_id" self.sketch_id,
 #         }
+
+#Class DesignStyle:
+class DesignStyle(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    design_style_name = db.Column(db.String(120), nullable=False)
+    image_url = db.Column(db.String(900), nullable=False)
+    projectworkspaces = db.relationship("ProjectWorkSpace", backref="designstyle")
+
+    def serialize(self):
+        return{
+            "id": self.id,
+            "design_style_name": self.designstyle_name,
+            "image_url": self.image_url,
+        }
