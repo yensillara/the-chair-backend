@@ -177,7 +177,8 @@ def create_new_project():
         project_name = body ['project_name'],
         client_id = body ['client_id'],
         notes = body ['notes'],
-        tipology = body ['tipology']
+        tipology = body ['tipology'],
+        workspace = body ['workspace']
     )
     db.session.add(new_project)
     try:
@@ -187,16 +188,14 @@ def create_new_project():
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROJECT"), 500
-    #return jsonify (add_notes.serialize()), 201
-    #new_workspace = ProjectWorkSpace(
-        #workspace_type_id = body ["workspace_type_id"], 
-        #project_id = new_project.id  
-    #)
-    #db.session.add(new_workspace)
-    #db.session.commit()
-    #print (new_workspace.serialize())
-    #return jsonify (new_workspace.serialize()), 201
-    
+    new_project_workspace = ProjectWorkSpace(
+        design_style_id = body ["design_style_id"],
+        project_id = new_project.id
+    )
+    db.session.add(new_design_style)
+    db.session.commit()
+    print (new_design_style.serializable())
+    return jsonify (new_design_style.serialize()), 201
 
 @app.route('/projects/<int:id>', methods=['GET', 'PATCH'])
 def update_project(id):
