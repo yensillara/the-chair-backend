@@ -136,11 +136,8 @@ def add_new_client():
 @app.route('/client/<int:id>', methods=['DELETE'])
 def remove_client(id):
     client = Client.query.get(id)
-<<<<<<< HEAD
     if client is None:
         raise APIException('Client not found', status_code=404)
-=======
->>>>>>> 9a04d66eac1968eae4e4d6787cb46baa84019d87
     db.session.delete(client)
     db.session.commit()
     return jsonify([]), 204
