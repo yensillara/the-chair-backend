@@ -178,25 +178,55 @@ def create_new_project():
         project_name = body ['project_name'],
         client_id = body ['client_id'],
         notes = body ['notes'],
-        tipology = body ['tipology'],
-        workspace = body ['workspace']
+        tipology = body ['tipology']
     )
     db.session.add(new_project)
     try:
         db.session.commit()
         print (new_project.serialize())
-        return jsonify (new_project.serialize()), 201
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROJECT"), 500
-    new_project_workspace = ProjectWorkSpace(
-        design_style_id = body ["design_style_id"],
+    new_project_data = ProjectData(
+        workspace = body ['workspace'],
+        design_style_id = body ['design_style_id'],
+        color_palette_id = body ['color_palette_id'],
+        sketch_id = body ['sketch_id'],
         project_id = new_project.id
     )
-    db.session.add(new_design_style)
+    db.session.add(new_project_data)
     db.session.commit()
-    print (new_design_style.serializable())
-    return jsonify (new_design_style.serialize()), 201
+    for furniture_style_id in body ['furniture_style_ids']:
+        project_furniture_style = ProjectFurnitureStyle(
+            furniture_style_id = furniture_style_id,
+            project_data_id = new_project_data
+        )
+        db.session.add(project_furniture_style)
+    db.session.commit()
+    for accesories_style_id in body ['accesories_style_ids']:
+        project_accesories_style = ProjectAccesoriesStyle(
+            accesories_style_id = accesories_style_id,
+            project_data_id = new_project_data
+        )
+        db.session.add(project_accesories_style)
+    db.session.commit()
+    for texture_id in body ['texture_ids']:
+        project_texture = ProjectTexture(
+            texture_id = texture_id,
+            project_data_id = new_project_data
+        )
+        db.session.add(project_texture)
+    db.session.commit()
+    for finishes_id in body ['finishes_ids']:
+        project_finishes = ProjectFinishes(
+            finishes_id = finishes_id,
+            project_data_id = new_project_data
+        )
+        db.session.add(project_finishes)
+    db.session.commit()
+    print (new_project_data.serialize())
+    return jsonify (new_project_data.serialize()), 201
+
 
 @app.route('/projects/<int:id>', methods=['GET', 'PATCH'])
 def update_project(id):

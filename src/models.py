@@ -149,15 +149,11 @@ class ProjectData(db.Model):
     sketch_id = db.Column(db.Integer, db.ForeignKey('sketch.id'), nullable=False)
 
 
-    def __init__ (self, workspace, project_id, design_style_id, furniture_style, accesories_style, color_palette_id, texture, finished, Sketch): 
+    def __init__ (self, workspace, project_id, design_style_id, color_palette_id, sketch_id): 
         self.workspace = workspace
         self.project_id = project_id
         self.design_style_id = design_style_id
-        self.furniture_style = furniture_style
-        self.accesories_style = accesories_style
         self.color_palette_id = color_palette_id
-        self.texture = texture
-        self.finishes = finishes
         self.sketch_id = sketch_id
         
 
