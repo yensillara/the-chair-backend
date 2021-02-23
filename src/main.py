@@ -55,6 +55,7 @@ def add_new_professional():
         profession = body ["profession"],
         phone = body ["phone"],
         location = body ["location"],
+        description = body ["description"],
     )
     db.session.add(new_professional)
     try:
@@ -76,8 +77,6 @@ def update_professional(id):
         body = request.get_json()
         if "full_name" in body:
             professional.full_name = body ['full_name']
-        if "email" in body:
-            professional.email = body ['email']
         if "phone" in body:
             professional.phone = body ['phone']
         if "location" in body:

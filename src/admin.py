@@ -1,6 +1,6 @@
 import os
 from flask_admin import Admin
-from models import db, Professional, Client, ProjectWorkSpace, DesignStyle, FurnitureStyle, ProjectFurnitureStyle, AccesoriesStyle, ProjectAccesoriesStyle, ColorPalette, Texture, ProjectTexture, Finishes, ProjectFinishes, Sketch 
+from models import db, Professional, Client, Project, ProjectData, DesignStyle, FurnitureStyle, ProjectFurnitureStyle, AccesoriesStyle, ProjectAccesoriesStyle, ColorPalette, Texture, ProjectTexture, Finishes, ProjectFinishes,Sketch
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -12,7 +12,8 @@ def setup_admin(app):
     # Add your models here, for example this is how we add a the User model to the admin
     admin.add_view(ModelView(Professional, db.session))
     admin.add_view(ModelView(Client, db.session))
-    admin.add_view(ModelView(ProjectWorkSpace, db.session))
+    admin.add_view(ModelView(Project, db.session))
+    admin.add_view(ModelView(ProjectData, db.session))
     admin.add_view(ModelView(DesignStyle, db.session))
     admin.add_view(ModelView(FurnitureStyle, db.session))
     admin.add_view(ModelView(ProjectFurnitureStyle, db.session))

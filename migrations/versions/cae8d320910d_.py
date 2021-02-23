@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8c2862a74de9
+Revision ID: cae8d320910d
 Revises: 
-Create Date: 2021-02-22 01:37:30.311066
+Create Date: 2021-02-23 17:13:58.243131
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8c2862a74de9'
+revision = 'cae8d320910d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -57,9 +57,16 @@ def upgrade():
     sa.Column('profession', sa.String(length=50), nullable=False),
     sa.Column('phone', sa.String(length=25), nullable=False),
     sa.Column('location', sa.String(length=50), nullable=False),
+    sa.Column('description', sa.String(length=1000), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('phone')
+    )
+    op.create_table('sketch',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('sketch_name', sa.String(length=120), nullable=False),
+    sa.Column('image', sa.String(length=900), nullable=False),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('texture',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -78,59 +85,62 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
+    op.create_table('project',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('client_id', sa.Integer(), nullable=False),
+    sa.Column('tipology', sa.Enum('RESIDENCTIAL', 'OFFICE', 'COMERCIAL', name='tipologies'), nullable=False),
+    sa.Column('project_name', sa.String(length=120), nullable=False),
+    sa.Column('notes', sa.String(length=300), nullable=False),
+    sa.ForeignKeyConstraint(['client_id'], ['client.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('project_data',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('project_id', sa.Integer(), nullable=False),
+    sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
+    sa.Column('design_style_id', sa.Integer(), nullable=False),
+    sa.Column('color_palette_id', sa.Integer(), nullable=False),
+    sa.Column('sketch_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['color_palette_id'], ['color_palette.id'], ),
+    sa.ForeignKeyConstraint(['design_style_id'], ['design_style.id'], ),
+    sa.ForeignKeyConstraint(['project_id'], ['project.id'], ),
+    sa.ForeignKeyConstraint(['sketch_id'], ['sketch.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('project_accesories_style',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
     sa.Column('accesories_style_id', sa.Integer(), nullable=False),
+    sa.Column('project_data_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['accesories_style_id'], ['accesories_style.id'], ),
+    sa.ForeignKeyConstraint(['project_data_id'], ['project_data.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('project_finishes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
     sa.Column('finishes_id', sa.Integer(), nullable=False),
+    sa.Column('project_data_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['finishes_id'], ['finishes.id'], ),
+    sa.ForeignKeyConstraint(['project_data_id'], ['project_data.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('project_furniture_style',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
     sa.Column('furniture_style_id', sa.Integer(), nullable=False),
+    sa.Column('project_data_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['furniture_style_id'], ['furniture_style.id'], ),
+    sa.ForeignKeyConstraint(['project_data_id'], ['project_data.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('project_texture',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
     sa.Column('texture_id', sa.Integer(), nullable=False),
+    sa.Column('project_data_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['project_data_id'], ['project_data.id'], ),
     sa.ForeignKeyConstraint(['texture_id'], ['texture.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('project_work_space',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
-    sa.Column('design_style_id', sa.Integer(), nullable=False),
-    sa.Column('furniture_style', sa.Integer(), nullable=False),
-    sa.Column('accesories_style', sa.Integer(), nullable=False),
-    sa.Column('color_palette_id', sa.Integer(), nullable=False),
-    sa.Column('texture', sa.Integer(), nullable=False),
-    sa.Column('finishes', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['accesories_style'], ['accesories_style.id'], ),
-    sa.ForeignKeyConstraint(['color_palette_id'], ['color_palette.id'], ),
-    sa.ForeignKeyConstraint(['design_style_id'], ['design_style.id'], ),
-    sa.ForeignKeyConstraint(['finishes'], ['finishes.id'], ),
-    sa.ForeignKeyConstraint(['furniture_style'], ['furniture_style.id'], ),
-    sa.ForeignKeyConstraint(['texture'], ['texture.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('project',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('client_id', sa.Integer(), nullable=False),
-    sa.Column('tipology', sa.Enum('UNIFAMILIAR', 'MULTIFAMILIAR', 'OFICINA', 'LOCAL_COMERCIAL', name='tipologies'), nullable=False),
-    sa.Column('workspace', sa.Enum('LIVINGROOM', 'FAMILYROOM', 'KITCHEN', 'BATHROOM', 'BEDROOM', 'VESTIER', 'HOME_OFFICE', 'OFFICE', 'PLAYROOM', 'LAUNDRY', 'OUTDOOR', name='workspaces'), nullable=False),
-    sa.Column('project_name', sa.String(length=120), nullable=False),
-    sa.Column('notes', sa.String(length=300), nullable=False),
-    sa.ForeignKeyConstraint(['client_id'], ['client.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
@@ -138,14 +148,15 @@ def upgrade():
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('project')
-    op.drop_table('project_work_space')
     op.drop_table('project_texture')
     op.drop_table('project_furniture_style')
     op.drop_table('project_finishes')
     op.drop_table('project_accesories_style')
+    op.drop_table('project_data')
+    op.drop_table('project')
     op.drop_table('client')
     op.drop_table('texture')
+    op.drop_table('sketch')
     op.drop_table('professional')
     op.drop_table('furniture_style')
     op.drop_table('finishes')

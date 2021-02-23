@@ -19,6 +19,8 @@ class Professional(db.Model):
     profession = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(25), unique=True, nullable=False)
     location = db.Column(db.String (50), nullable=False)
+    description = db.Column(db.String (1000), nullable=False)
+
     clients = db.relationship("Client", backref="professional")
 
     def __init__(self,**body):
@@ -30,6 +32,7 @@ class Professional(db.Model):
         self.profession = body ['profession']
         self.phone = body ['phone']
         self.location = body ['location']
+        self.description = body ['description']
         
     def set_password(self, password):
         return generate_password_hash(
@@ -47,7 +50,7 @@ class Professional(db.Model):
         new_professional=cls(kwargs)
         db.session.add(new_professional)
         db.session.commit()
-        return add_new_professional    
+        return new_professional    
 
     def serialize(self):
         return {
@@ -57,6 +60,7 @@ class Professional(db.Model):
             "profession": self.profession,
             "phone": self.phone,
             "location": self.location,
+            "descrition":self.description,
         }
 
 class Client(db.Model):
@@ -66,12 +70,13 @@ class Client(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(25), nullable=False)
     location = db.Column(db.String(50), nullable=False)
+
     projects = db.relationship("Project", backref="client")
 
     @classmethod
     def create (cls, **body):
         new_client=cls(body)
-        return add_new_cliente  
+        return new_client
 
     def serialize(self):
         return{
@@ -84,10 +89,9 @@ class Client(db.Model):
         }
 
 class Tipologies(enum.Enum):
-    UNIFAMILIAR = "Unifamiliar"
-    MULTIFAMILIAR = "Multifamiliar"
-    OFICINA = "Oficina"
-    LOCAL_COMERCIAL = "Local Comercial"
+    RESIDENCTIAL = "Residential"
+    OFFICE = "Office"
+    COMERCIAL = "Comercial"
 
 class WorkSpaces(enum.Enum):
     LIVINGROOM = "Living room"
@@ -105,16 +109,18 @@ class WorkSpaces(enum.Enum):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id'), nullable=False)
-    tipology = db.Column(db.Enum(Tipologies), nullable=False, default="Unifamiliar")
-    workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
+    tipology = db.Column(db.Enum(Tipologies), nullable=False, default="Residential")
+    #project_data = db.Column(db.Integer, db.ForeignKey('ProjectData.id'), uselist=False)
     project_name = db.Column(db.String(120), nullable=False)
     notes = db.Column(db.String(300), nullable=False)
+
+    project_data = db.relationship ('ProjectData', backref="project", uselist=False)
 
     def __init__ (self, client_id, tipology, project_name, notes, workspace):
         self.client_id = client_id
         self.project_name = project_name
         self.notes = notes
-        self.workspace = WorkSpaces(workspace)
+        self.project_data = project_data
         self.tipology = Tipologies(tipology)
 
     def serialize(self):
@@ -123,26 +129,29 @@ class Project(db.Model):
             "client_id": self.client_id,
             "client": self.client.serialize(),
             "tipology": self.tipology.value,
-            "workspace": self.workspace.value,
+            "project_data": self.project_data.serialize(),
             "project_name": self.project_name,
             "notes": self.notes
         }
 
-# Class ProjectWorkSpace:
+# Class ProjectData:
 
-class ProjectWorkSpace(db.Model):
+class ProjectData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
     workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
     design_style_id = db.Column(db.Integer, db.ForeignKey('design_style.id'), nullable=False)
-    furniture_style = db.Column(db.Integer, db.ForeignKey('furniture_style.id'), nullable=False)
-    accesories_style = db.Column(db.Integer, db.ForeignKey('accesories_style.id'), nullable=False)
+    project_furniture_styles = db.relationship('ProjectFurnitureStyle', backref='project_data')
+    project_accesories_styles = db.relationship('ProjectAccesoriesStyle', backref='project_data')
     color_palette_id = db.Column(db.Integer, db.ForeignKey('color_palette.id'), nullable=False)
-    texture = db.Column(db.Integer, db.ForeignKey('texture.id'), nullable=False)
-    finishes = db.Column(db.Integer, db.ForeignKey('finishes.id'), nullable=False)
+    project_textures = db.relationship('ProjectTexture', backref='project_data')
+    project_finishes = db.relationship('ProjectFinishes', backref='project_data')
     sketch_id = db.Column(db.Integer, db.ForeignKey('sketch.id'), nullable=False)
 
-    def __init__ (self, workspace, design_style_id, furniture_style, accesories_style, color_palette_id, texture, finishes, Sketch): 
+
+    def __init__ (self, workspace, project_id, design_style_id, furniture_style, accesories_style, color_palette_id, texture, finished, Sketch): 
         self.workspace = workspace
+        self.project_id = project_id
         self.design_style_id = design_style_id
         self.furniture_style = furniture_style
         self.accesories_style = accesories_style
@@ -156,6 +165,7 @@ class ProjectWorkSpace(db.Model):
         return{
             "id": self.id,
             "workspace": self.workspace.value,
+            "project_id": self.project_id,
             "design_style_id": self.design_style_id,
             "furniture_style": self.furniture_style,
             "accesories_style": self.accesories_style,
@@ -170,7 +180,8 @@ class DesignStyle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     design_style_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projectworkspaces = db.relationship("ProjectWorkSpace", backref="designstyle")
+
+    project_data=db.relationship ('ProjectData', backref='design_style')
 
     def serialize(self):
         return{
@@ -178,19 +189,20 @@ class DesignStyle(db.Model):
             "design_style_name": self.designstyle_name,
             "image_url": self.image_url,
         }
+
 # Class FurnitureStyle:
 class FurnitureStyle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     furniture_style_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projectfurniturestyles = db.relationship("ProjectFurnitureStyle", backref="furniturestyle")
 
+    project_furniture_style = db.relationship ("ProjectFurnitureStyle", backref="furniture_style")
+    
     def serialize(self):
         return{
             "id":self.id,
             "furniture_style_name":self.furniture_style_name,
-            "image_url": self.image_url,
-            
+            "image_url": self.image_url, 
         }
 
 # Class ProjectFurnitureStyle:
@@ -198,12 +210,14 @@ class ProjectFurnitureStyle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
     furniture_style_id = db.Column(db.Integer, db.ForeignKey('furniture_style.id'), nullable=False)
-
+    project_data_id = db.Column (db.Integer, db.ForeignKey('project_data.id'), nullable=False)
+    
     def serialize(self):
         return{
             "id":self.id,
             "workspace": self.workspace.value,
             "furniture_style_id": self.furniture_style_id,
+            "project_data_id": self.project_data_id,
         } 
 
 # Class AccesoriesStyle:
@@ -211,14 +225,14 @@ class AccesoriesStyle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     accesories_style_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projectaccesoriesstyles = db.relationship("ProjectAccesoriesStyle", backref="accesoriestyle")
+
+    project_accesories_style = db.relationship ("ProjectAccesoriesStyle", backref="accesories_style")
 
     def serialize(self):
         return{
             "id":self.id,
             "accesories_style_name": self.accesories_style_name,
             "image_url": self.image_url,
-            
         }
 
 # Class ProjectAccesoriesStyle:
@@ -226,12 +240,14 @@ class ProjectAccesoriesStyle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
     accesories_style_id = db.Column(db.Integer, db.ForeignKey('accesories_style.id'), nullable=False)
+    project_data_id = db.Column (db.Integer, db.ForeignKey('project_data.id'), nullable=False)
 
     def serialize(self):
         return{
             "id":self.id,
             "workspace": self.workspace.value,
             "accesories_style_id": self.accesories_style_id,
+            "project_data_id": self.project_data_id,
         }
 
 #Class ColorPalette:
@@ -239,7 +255,8 @@ class ColorPalette(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     color_palette_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projectworkspaces = db.relationship("ProjectWorkSpace", backref="colorpalette")
+
+    project_data=db.relationship ('ProjectData', backref='color_palette')
 
     def serialize(self):
         return{
@@ -253,7 +270,8 @@ class Texture(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     texture_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projecttextures = db.relationship("ProjectTexture", backref="texture")
+
+    project_texture = db.relationship ("ProjectTexture", backref="texture")
 
     def serialize(self):
         return{
@@ -262,18 +280,19 @@ class Texture(db.Model):
             "image_url": self.image_url,
         }
 
-
 # Class ProjectTexture:
 class ProjectTexture(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
     texture_id = db.Column(db.Integer, db.ForeignKey('texture.id'), nullable=False)
+    project_data_id = db.Column (db.Integer, db.ForeignKey('project_data.id'), nullable=False)
 
     def serialize(self):
         return{
             "id":self.id,
             "workspace": self.workspace,
             "texture_id": self.texture_id,
+            "project_data_id": self.project_data_id,
         }
 
 #Class Finishes:
@@ -281,13 +300,14 @@ class Finishes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     finishes_name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(900), nullable=False)
-    projectfinishes = db.relationship("ProjectFinishes", backref="finishes")
+
+    project_finishes = db.relationship ("ProjectFinishes", backref="finishes")
 
     def serialize(self):
         return{
             "id": self.id,
             "finishes_name": self.finishes_name,
-            "image_url": self.image_url,
+            "image_url": self.image_url,   
         }
 
 # Class ProjectFinishes:
@@ -295,12 +315,14 @@ class ProjectFinishes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     workspace = db.Column(db.Enum(WorkSpaces), nullable=False, default="Living room")
     finishes_id = db.Column(db.Integer, db.ForeignKey('finishes.id'), nullable=False)
+    project_data_id = db.Column (db.Integer, db.ForeignKey('project_data.id'), nullable=False)
 
     def serialize(self):
         return{
             "id":self.id,
             "workspace": self.workspace,
-            "finishes_id": self.finishes_id,
+            "finishes_id": self.finished_id,
+            "project_data_id": self.project_data_id,
         }
 
 # Class Sketch:
@@ -308,12 +330,12 @@ class Sketch(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sketch_name = db.Column(db.String(120), nullable=False)
     image = db.Column(db.String(900), nullable=False)
-    projectworkspaces = db.relationship("ProjectWorkSpace", backref="sketch")
+
+    project_data=db.relationship ('ProjectData', backref='sketch')
 
     def serialize(self):
         return{
             "id": self.id,
-            "projectworkspace_id": self.projectworkspace_id,
             "sketch_name": self.sketch_name,
             "image": self.image,
         }
