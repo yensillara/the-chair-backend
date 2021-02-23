@@ -121,6 +121,7 @@ class Project(db.Model):
         return{
             "id": self.id,
             "client_id": self.client_id,
+            "client": self.client.serialize(),
             "tipology": self.tipology.value,
             "workspace": self.workspace.value,
             "project_name": self.project_name,
