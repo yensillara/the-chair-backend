@@ -89,7 +89,7 @@ class Client(db.Model):
         }
 
 class Tipologies(enum.Enum):
-    RESIDENCTIAL = "Residential"
+    RESIDENTIAL = "Residential"
     OFFICE = "Office"
     COMERCIAL = "Comercial"
 
