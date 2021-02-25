@@ -61,7 +61,8 @@ def add_new_professional():
     try:
         db.session.commit()
         print (new_professional.serialize())
-        return jsonify (new_professional.serialize()), 201
+        response = {'jwt': create_access_token (identity=new_professional.email), "professional": new_professional.serialize()}
+        return jsonify (response), 201
     except Exception as error:
         print (error.args)
         return jsonify ("NOT CREATE PROFESSIONAL"), 500
@@ -271,7 +272,7 @@ def handle_login():
     if not professional:
         return jsonify({"msg": "User does not exist"}), 404
     if professional.check_password(password):
-        response = {'jwt': create_access_token (identity=professional.email)}
+        response = {'jwt': create_access_token (identity=professional.email), "professional": professional.serialize()}
         return jsonify(response), 200
     else:
         return jsonify({"msg": "Bad credentials"}), 401
