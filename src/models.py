@@ -182,7 +182,7 @@ class DesignStyle(db.Model):
     def serialize(self):
         return{
             "id": self.id,
-            "design_style_name": self.designstyle_name,
+            "design_style_name": self.design_style_name,
             "image_url": self.image_url,
         }
 

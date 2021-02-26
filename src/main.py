@@ -9,7 +9,7 @@ from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_current_user, get_jwt_identity
-from models import db, Professional, Client, Project
+from models import db, Professional, Client, Project, DesignStyle, FurnitureStyle, AccesoriesStyle, ColorPalette, Texture, Finishes
 #from models import Person
 
 app = Flask(__name__)
@@ -133,7 +133,7 @@ def add_new_client():
         return jsonify ("NOT CREATE CLIENT"), 500
 
 #to delete a specific client
-@app.route('/client/<int:id>', methods=['DELETE'])
+@app.route('/clients/<int:id>', methods=['DELETE'])
 def remove_client(id):
     client = Client.query.get(id)
     if client is None:
@@ -142,7 +142,7 @@ def remove_client(id):
     db.session.commit()
     return jsonify([]), 204
 
-@app.route('/client/<int:id>', methods=['GET', 'PATCH'])
+@app.route('/clients/<int:id>', methods=['GET', 'PATCH'])
 def update_client(id):
     if request.method == ['GET']:
         client = Client.query.get(id)
@@ -286,6 +286,33 @@ def handle_seguro():
     email = get_jwt_identity()
     #esto devuelve la identidad del token
     return jsonify ({"msg":f"Hello,{email}"})
+
+
+@app.route("/project-options", methods=['GET'])
+def get_project_options():
+    response_body = {}
+    
+    design_styles = DesignStyle.query.all()
+    response_body.update({"designStyles": [d.serialize() for d in design_styles]})
+
+    furniture_styles = FurnitureStyle.query.all()
+    response_body.update({"furnitureStyles": [d.serialize() for d in furniture_styles]})
+
+    accesories_styles = AccesoriesStyle.query.all()
+    response_body.update({"accesoriesStyles": [d.serialize() for d in accesories_styles]})
+
+    color_palettes = ColorPalette.query.all()
+    response_body.update({"colorPalettes": [d.serialize() for d in color_palettes]})
+    
+    textures = Texture.query.all()
+    response_body.update({"textures": [d.serialize() for d in textures]})
+
+    finishes = Finishes.query.all()
+    response_body.update({"finishes": [d.serialize() for d in finishes]})
+
+    return jsonify (response_body), 200
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
